@@ -215,9 +215,9 @@ font-size: clamp(14px,1.25vw,1.5rem);
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 4rem;
   width: 30%;
-  height: 75%;
+  height: 80%;
   min-width: 280px;
   min-height: 300px;
   position: relative;
@@ -250,6 +250,114 @@ font-size: clamp(14px,1.25vw,1.5rem);
   gap: 2rem;
 }
 
+.div-form-content button{
+  border-radius: 120px;
+  border: none;
+background: #A58842;
+backdrop-filter: blur(5.389618873596191px);
+color: #FFF;
+font-family: Typo;
+font-size: clamp(16px,1vw,1.2rem);
+font-style: normal;
+width: 100%;
+height: 2.75rem;
+min-height: 35px;
+font-weight: 400;
+line-height: normal;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: white;
+}
+
+.text {
+  margin: 0 20px; /* Ajusta según sea necesario */
+  color: #FFF;
+font-family: Alexandria;
+font-size:clamp(16px,1vw,1rem);
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.have-account{
+  color: #FFF;
+width: 100%;
+text-align: center;
+font-family: Alexandria;
+font-size: clamp(16px,1vw,1.1rem);
+font-style: normal;
+font-weight: 200;
+line-height: normal;
+}
+
+.have-account span{
+cursor: pointer;
+font-weight: 500;
+text-decoration: underline;
+}
+
+.buttons-login{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.5rem;
+  padding: .5rem 0rem;
+  align-items: center;
+  justify-content: start;
+}
+
+.buttons-login div{
+  width: 100%;
+}
+.buttons-login div button{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  justify-content: center;
+}
+
+.buttons-login div:nth-child(1) button{
+  background-color: transparent;
+  border: 1px solid #FFF;
+  color: #FFF;
+font-family: Alexandria;
+font-size: clamp(14px,1vw,1rem);
+font-style: normal;
+font-weight: 200;
+line-height: normal;
+}
+.buttons-login div:nth-child(2) button{
+  background-color: transparent;
+  border: 1px solid #FFF;
+  color: #FFF;
+font-family: Alexandria;
+font-size: clamp(14px,1vw,1rem);
+font-style: normal;
+font-weight: 200;
+line-height: normal;
+}
+
+.buttons-login div:nth-child(3) button{
+  background-color: #000;
+  border: 1px solid #000;
+  color: #FFF;
+font-family: Alexandria;
+font-size: clamp(14px,1vw,1rem);
+font-style: normal;
+font-weight: 200;
+line-height: normal;
+}
+
+
 .formulario-chopraverse{
   display: flex;
   flex-direction: column;
@@ -257,8 +365,8 @@ font-size: clamp(14px,1.25vw,1.5rem);
   align-items: start;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  gap: 3rem;
+  height: fit-content;
+  gap: 2.5rem;
 }
 
 .input{
@@ -282,7 +390,6 @@ line-height: normal;
   border: none;
   outline: none;
   color: #FFF;
-  padding-left: 20px;
   font-family: Alexandria;
   font-size: clamp(16px,1.05vw,1.3rem);
   font-style: normal;
