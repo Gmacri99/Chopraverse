@@ -25,7 +25,7 @@ button{
   z-index: 1002;
   align-items: start;
   height: 6.5rem;
-  min-height: 100px;
+  min-height: 80px;
   position: fixed;
   border-bottom: 1px solid rgba(156, 156, 156, 0.40);
 }
@@ -390,13 +390,14 @@ line-height: normal;
   border: none;
   outline: none;
   color: #FFF;
+  padding-left: 10px;
   font-family: Alexandria;
   font-size: clamp(16px,1.05vw,1.3rem);
   font-style: normal;
   font-weight: 200;
   line-height: normal;
   height: 3rem;
-  width: 100%;
+  width: 98%;
 background: rgba(156, 156, 156, 0.10);
 backdrop-filter: blur(4.400000095367432px);
 }
@@ -520,3 +521,300 @@ line-height: normal;
   gap: 2rem;
 }
 }
+
+@media screen and (min-width:768px) and (max-width:1023px) {
+
+  .flex-sub ul{
+    gap: 2rem;
+  }
+
+  .first-buttons{
+    display: none;
+  }
+
+  .last-buttons{
+    display: none;
+  }
+
+  .navbar{
+    height: 3rem;
+    border: none;
+  }
+
+  .logo-header img{
+    width: 80px;
+    height: auto;
+  }
+
+  .logo-header{
+    width: 100%;
+    padding-left: 3rem;
+    justify-content: start;
+    position: relative;
+  }
+
+  .first-buttons{
+    display: none;
+  }
+
+  .last-buttons{
+    display: none;
+  }
+
+  .div-form{
+    width: 70%;
+margin-top: 7.6rem;
+padding-bottom: 2rem;
+    height: 50%;
+  }
+
+  .bg-login{
+    min-height: 100%;
+    object-fit: cover;
+    position: fixed;
+  }
+
+  .div-form-content{
+    gap: 1rem;
+  }
+
+  .formulario-chopraverse{
+    gap: 1.5rem;
+  }
+
+  .login{
+    height: fit-content;
+    min-height: 100vh;
+  }
+
+  .flex-sub ul{
+    gap: 2rem;
+  }
+
+  }
+
+  @media screen and (min-width:1024px) and (max-width:1279px) {
+
+    .div-form{
+      width: 70%;
+margin-top: 7.6rem;
+padding-bottom: 2rem;
+      height: 50%;
+    }
+
+    .bg-login{
+      min-height: 100%;
+      object-fit: cover;
+      position: fixed;
+    }
+
+    .div-form-content{
+      gap: 1rem;
+    }
+
+    .formulario-chopraverse{
+      gap: 1.5rem;
+    }
+
+    .login{
+      height: fit-content;
+      min-height: 100vh;
+    }
+
+    .flex-sub ul{
+      gap: 2rem;
+    }
+    }
+
+
+    @media screen and (min-width:1280px) and (max-width:1439px) {
+
+      .div-form{
+        width: 50%;
+  margin-top: 12rem;
+  padding-bottom: 2rem;
+  margin-bottom: 5rem;
+        height: fit-content;
+      }
+
+
+
+      .formulario-chopraverse{
+        gap: 1.5rem;
+      }
+
+      .buttons-login{
+        gap: 1rem;
+      }
+
+      .div-form-content{
+        gap: 1.5rem;
+      }
+
+      .bg-login{
+        min-height: 100%;
+        object-fit: cover;
+        position: fixed;
+      }
+  
+  
+      }
+
+      @media screen and (min-width:1440px) and (max-width:1599px) {
+
+        .div-form{
+          width: 45%;
+    margin-top: 12rem;
+    padding-bottom: 2rem;
+    margin-bottom: 5rem;
+          height: fit-content;
+        }
+  
+  
+  
+        .formulario-chopraverse{
+          gap: 2rem;
+        }
+  
+        .buttons-login{
+          gap: 1.5rem;
+        }
+  
+        .div-form-content{
+          gap: 2rem;
+        }
+  
+        .bg-login{
+          min-height: 100%;
+          object-fit: cover;
+          position: fixed;
+        }
+    
+    
+        }
+
+        @media screen and (min-width:480px) and (max-width:767px) {
+
+          .div-form{
+            width: 75%;
+      margin-top: 12rem;
+      padding-bottom: 2rem;
+      margin-bottom: 5rem;
+            height: fit-content;
+          }
+
+          .navbar{
+            height: 3rem;
+            border: none;
+          }
+    
+          .logo-header img{
+            width: 80px;
+            height: auto;
+          }
+
+ 
+          .logo-header{
+            width: 100%;
+            padding-left: 3rem;
+            justify-content: start;
+            position: relative;
+          }
+        
+
+          .first-buttons{
+            display: none;
+          }
+
+          .last-buttons{
+            display: none;
+          }
+    
+    
+          .first-buttons{
+            display: none;
+          }
+
+          .last-buttons{
+            display: none;
+          }
+    
+          .formulario-chopraverse{
+            gap: 1rem;
+          }
+    
+          .buttons-login{
+            gap: 1rem;
+          }
+    
+          .div-form-content{
+            gap: 1rem;
+          }
+    
+          .bg-login{
+            min-height: 100%;
+            object-fit: cover;
+            position: fixed;
+          }
+      
+      
+          }
+
+          @media screen and (max-width:479px){
+
+            .div-form{
+              width: 95%;
+        margin-top: 120px;
+        padding-bottom: 2rem;
+        margin-bottom: 5rem;
+              height: fit-content;
+            }
+
+            .navbar{
+              height: 3rem;
+              border: none;
+            }
+      
+            .logo-header img{
+              width: 80px;
+              height: auto;
+            }
+
+       
+  .logo-header{
+    width: 100%;
+    padding-left: 3rem;
+    justify-content: start;
+    position: relative;
+  }
+
+
+            .first-buttons{
+              display: none;
+            }
+
+            .last-buttons{
+              display: none;
+            }
+      
+      
+            .formulario-chopraverse{
+              gap: 1rem;
+            }
+      
+            .buttons-login{
+              gap: 1rem;
+            }
+      
+            .div-form-content{
+              gap: 1rem;
+            }
+      
+            .bg-login{
+              min-height: 100%;
+              object-fit: cover;
+              position: fixed;
+            }
+        
+        
+            }
