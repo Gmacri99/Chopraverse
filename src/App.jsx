@@ -11,7 +11,7 @@ function App() {
     
       <Navbar/>
       {/*<Login/>*/}
-      <Checkout/>
+      {<Checkout/>}
       {/*<Footer/>*/}
     
     </>
