@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import bg3 from '../assets/bg/image 3.png'
 import apple from '../assets/logos_apple.svg'
 import meta from '../assets/image 18.svg'
