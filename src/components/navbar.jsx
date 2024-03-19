@@ -1,7 +1,12 @@
 
 import logo from '../assets/logo.svg'
 import cart from '../assets/cart.svg'
-const Navbar = () => {
+import { useEffect } from 'react'
+const Navbar = ({openCart,login,register,data,register2}) => {
+
+    useEffect(()=>{
+        console.log(data)
+    },[data])
   return (
     <section className='navbar'>
         <div className='logo-header'><img src={logo} alt="Logo-chopraverse" /></div>
@@ -15,12 +20,15 @@ const Navbar = () => {
             </div>
             
             <div className='last-buttons'>
-                <div className='last-buttons-div'>
-                    <button>Login</button>
+                <div className={`${data?.length === 0 ? '' : 'move-left'} last-buttons-div` }>
+                    <button  onClick={login}>Login</button>
                     <p>/</p>
-                    <button>Sign up</button>
+                    <button onClick={register}>Sign up</button> 
                 </div>
-                <button className='cart'><img src={cart} alt="cart-chopraverse" /></button>
+                <div className={`${data?.length !== 0 ? 'opac-1' : ''} last-buttons-div opac` }> 
+                    <button onClick={register2} >Hi, {data}!</button>
+                </div>
+                <button onClick={openCart} className='cart'><img src={cart} alt="cart-chopraverse" /></button>
             </div>
         </div>
     </section>
