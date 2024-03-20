@@ -4,259 +4,61 @@ import bg1 from '../assets/bg/fondo1.png'
 import bg4 from '../assets/bg/bg4.jpeg'
 import logo from '../assets/logo.svg'
 import arrow from '../assets/black_arrow.svg'
-import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { Observer } from 'gsap/all'
+import Famoso1 from '../assets/Rectangle9.jpg'
 import { SliderBook } from './SliderBook'
 import { register } from 'swiper/element/bundle';
 import { useEffect, useState } from 'react'
+import  '../styles/swiperStyle.css'
+import SliderFamosos from './SliderFamosos'
 
 const Home = ({clase}) => {
 
-    const [claseArecibir,setClaseArecibir]=useState('move-right')
-
-    gsap.registerPlugin(Observer);
-    gsap.set('section', {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-})
-    gsap.registerPlugin(useGSAP);
-
-    useGSAP(()=>{
-
-        let animating = false,
-        currentIndex = 0,
-        nextIndex = -1;
-        const maxIndex = 5;
-        const isAnimating = () => animating = true;
-        const notAnimating = () => animating = false;
+    const [claseArecibir,setClaseArecibir]=useState('')
     
-        const headerTimeline = gsap.timeline({
-            paused: true,
-            defaults: {
-                duration: 1,
-                // ease: 'sine.in',
+  
+    useEffect(()=>{const swiperEl = document.querySelector('#journey');
+    register()
+    
+    
+    
+    const journeyButtons = gsap.utils.toArray('.journey-button');
+    
+    gsap.set(journeyButtons[1], {
+        scale: 1.2
+    })
+    let buttonsChange = gsap.timeline({
+        paused: true,
+    })
+        .to(journeyButtons[0], {
+            scale: 1.2,
+        })
+        .to(journeyButtons[1], {
+            scale: 1,
+        }, "<")
+    
+    journeyButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            if (swiperEl.swiper.animating) return;
+            switch (index) {
+                case 0:
+                    swiperEl.swiper.slidePrev();
+                    buttonsChange.tweenTo(0)
+                    break;
+                case 1:
+                    swiperEl.swiper.slideNext();
+                    buttonsChange.tweenTo(buttonsChange.totalDuration())
+                    break;
+                default:
+                    swiperEl.swiper.slideNext();
+                    buttonsChange.reverse(0)
+                    break;
             }
         })
-            .to('.navbar', {
-                yPercent: -100,
-            })
-
-        const scrollTimeline = gsap.timeline({
-            paused: true,
-            defaults: {
-                duration: 1,
-                ease: 'power2.inOut',
-            },
-        })
-        .to("#hero-section", {
-            yPercent: -100,
-            onReverseComplete: notAnimating,
-        })
-        .from('#welcome-section', {
-            yPercent: 100,
-        
-        }, "<")
-        .from('.welcome-before > p', {
-            y: '50vh',
-        }, "<")
-        .from('.welcome-wrapper', {
-            y: '150vh',
-            onComplete: notAnimating,
-        }, "<")
-        // INDEX: 2
-    .to('.welcome-wrapper', {
-        clipPath: 'circle(100%)',
-        onReverseComplete: notAnimating,
     })
-    .to('.welcome-before', {
-        opacity: 0,
-    }, "<")
-    .from('.welcome-text', {
-        y: '50vh',
-        opacity: 1,
-        onComplete: notAnimating,
-    }, "<")
-        // INDEX: 3
-        .to('.welcome-wrapper', {
-            // xPercent: -100,
-            clipPath: 'circle(50%)',
-            onReverseComplete: notAnimating,
-            duration: 0.75,
-        })
-        .to('.welcome-wrapper', {
-            xPercent: -100,
-            duration: 0.75,
-        }, '<0.25')
-        .from('#book-slider-section', {
-            xPercent: 200,
-            duration: 0.75,
-            onComplete: notAnimating,
-        }, "<")
-        // INDEX: 4
-    .from('#meditation-section', {
-        yPercent: 100,
-    })
-    .fromTo('.meditation-wrapper', {
-        clipPath: 'circle(10%)',
-    }, {
-        clipPath: 'circle(100%)',
-        onReverseComplete: notAnimating,
-        onComplete: notAnimating,
-    }, "<")
-    .from('.meditation-slider-wrapper', {
-        opacity: 0,
-        scale: 0.75,
-        onReverseComplete: notAnimating,
-    })
-    .to('#book-slider-section', {
-        yPercent: -100,
-        opacity: 0,
-    }, "<")
-    .to('.meditation-text', {
-        scale: 10,
-    }, "<")
-    .to('.meditation-wrapper', {
-        clipPath: 'circle(40%)',
-        y: '-90vh',
-    }, "<")
-    .to('.meditation-wrapper img', {
-        y: '90vh',
-        scale: 1.1,
-    }, "<")
-    .to('.meditation-text', {
-        opacity: 0,
-        duration: 0.5,
-    }, "<25%")
-    .from('.journey-slider-buttons', {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: notAnimating,
-    }, "<50%")
-
-        function scrollListener(index, direction) {
-            if (index > maxIndex || index < 0) return;
-        
-            if (direction == -1) {
-                headerTimeline.play();
-                gsap.to('.navbar > #hero-section', {
-                    yPercent: -100,
-                    opacity: 0,
-                    duration: 1,
-                })
-            }
-            else if (direction == 1) {
-                headerTimeline.tweenTo(0);
-                gsap.to('.navbar > #hero-section', {
-                    yPercent: 0,
-                    opacity: 1,
-                    duration: 2,
-                })
-            }
-            isAnimating()
-            scrollTimeline.timeScale(0.75).tweenTo(index);
-            currentIndex = index;
-        }
-
-        const observer = Observer.create({
-            target: window,
-            type: 'wheel, touch, scroll',
-            preventDefault: true,
-            onDown: () => !animating && scrollListener(currentIndex - 1, 1),
-            onUp: () => !animating && scrollListener(currentIndex + 1, -1),
-            wheelSpeed: -1
-        })
-        
-    })
-
-
-register();
-
-useEffect(()=>{const swiperEl = document.querySelector('#journey');
-
-
-// swiper parameters
-const swiperParams = {
-    enabled: true,
-    slidesPerView: 4,
-    speed: 1500,
-    breakpoints: {
-        0: {
-            spaceBetween: 0,
-            slidesPerView: 1.25,
-            centeredSlides: true,
-            allowTouchMove: true,
-        },
-        768: {
-            spaceBetween: 50,
-            slidesPerView: 3,
-            allowTouchMove: true,
-        },
-        1080: {
-            spaceBetween: 80,
-            slidesPerView: 4,
-            allowTouchMove: true,
-        },
-        1360: {
-            spaceBetween: 100,
-            slidesPerView: 4,
-            allowTouchMove: false,
-        },
-        1920: {
-            spaceBetween: 125,
-            slidesPerView: 4,
-            allowTouchMove: true,
-        },
-
-    },
-    loop: true,
-};
-
-
-console.log(swiperEl)
-console.log(swiperParams)
-
-Object.assign(swiperEl, swiperParams);
-swiperEl.initialize();
-
-const journeyButtons = gsap.utils.toArray('.journey-button');
-
-gsap.set(journeyButtons[1], {
-    scale: 1.2
-})
-let buttonsChange = gsap.timeline({
-    paused: true,
-})
-    .to(journeyButtons[0], {
-        scale: 1.2,
-    })
-    .to(journeyButtons[1], {
-        scale: 1,
-    }, "<")
-
-journeyButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-        if (swiperEl.swiper.animating) return;
-        switch (index) {
-            case 0:
-                swiperEl.swiper.slidePrev();
-                buttonsChange.tweenTo(0)
-                break;
-            case 1:
-                swiperEl.swiper.slideNext();
-                buttonsChange.tweenTo(buttonsChange.totalDuration())
-                break;
-            default:
-                swiperEl.swiper.slideNext();
-                buttonsChange.reverse(0)
-                break;
-        }
-    })
-})
-}
-,[])
-
+    }
+    ,[])
+    
 
 
 
@@ -368,40 +170,40 @@ useEffect(() => {
           </p>
         </div>
       </div>
-      <div className="meditation-slider-wrapper">
+      <div className="meditation-slider-wrapper" id='journey'>
         <div className="journey-slider-wrapper">
-          <swiper-container className="journey-slider" id='journey' init="false">
-            <swiper-slide className="journey-slide">
+          <swiper-container class="journey-slider" init="false">
+            <swiper-slide class="journey-slide">
               <img
-                src={bg1}
+                src={Famoso1}
                 alt="journey_slide"
                 loading="lazy"
               />
             </swiper-slide>
             <swiper-slide className="journey-slide">
               <img
-                src={bg1}
+                src="/sliders/journey_slider/journey_2.jpg"
+                alt="journey_slide"
+                loading="lazy"
+              />
+            </swiper-slide>
+            <swiper-slide class="journey-slide">
+              <img
+                src="/sliders/journey_slider/journey_3.jpg"
                 alt="journey_slide"
                 loading="lazy"
               />
             </swiper-slide>
             <swiper-slide className="journey-slide">
               <img
-                src={bg1}
+                src="/sliders/journey_slider/journey_4.jpg"
                 alt="journey_slide"
                 loading="lazy"
               />
             </swiper-slide>
             <swiper-slide className="journey-slide">
               <img
-                src={bg1}
-                alt="journey_slide"
-                loading="lazy"
-              />
-            </swiper-slide>
-            <swiper-slide className="journey-slide">
-              <img
-                src={bg1}
+                src="/sliders/journey_slider/journey_5.jpg"
                 alt="journey_slide"
                 loading="lazy"
               />

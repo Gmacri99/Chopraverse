@@ -24,9 +24,6 @@ const headerTimeline = gsap.timeline({
         // ease: 'sine.in',
     }
 })
-    .to('.navbar', {
-        yPercent: -100,
-    })
 
 
 const scrollTimeline = gsap.timeline({
