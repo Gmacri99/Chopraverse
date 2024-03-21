@@ -317,7 +317,7 @@ opacity: 1;
   font-family: 'Alexandria';
   font-weight: 500;
   white-space: nowrap;
-  font-size:clamp(20px,3.9vw,3.8rem);
+  font-size:clamp(25px,3.9vw,3.8rem);
   line-height: 100%;
 }
 
@@ -365,7 +365,7 @@ opacity: 1;
   color: #000;
   font-family: 'Alexandria';
   font-weight: 500;
-  font-size:clamp(14px,1.3vw,1.6rem);
+  font-size:clamp(20px,1.3vw,1.6rem);
 }
 
 
@@ -685,6 +685,136 @@ line-height: 100%; /* 0px */
   width: 85%;
 }
 
+
+#testimonials-section {
+  background-color: #eae5df;
+  z-index: 3;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 160rem;
+}
+.testimonials-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.testimonials-slider-container {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+.testimonials-slider-container div:nth-of-type(1) {
+  padding-left: var(--horizontal-padding);
+  height: 50%;
+}
+.testimonials-slider-container p {
+  color: #000;
+  font-family: "Alexandria";
+  font-size: calc(var(--fontsize-root) * 5.25);
+  font-style: normal;
+  font-weight: 200;
+  line-height: 1;
+}
+.testimonials-slider-container swiper-container {
+  width: 100%;
+  height: 100%;
+  transform: translateX(-5vw);
+  position: absolute;
+}
+.testimonials-slider-container swiper-container swiper-slide {
+  height: 100%;
+  transition: height 0.25s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.testimonials-slider-container swiper-container swiper-slide img {
+  height: 37.5%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform-origin: center bottom;
+  transition: height 1s ease-in-out;
+}
+.testimonials-slider-container.backward
+  swiper-container
+  swiper-slide:nth-of-type(6)
+  img {
+  height: 100%;
+}
+.testimonials-slider-container.forward
+  swiper-container
+  swiper-slide:nth-of-type(5)
+  img {
+  height: 100%;
+}
+
+.testimonials-slider-container span span.weight {
+  font-weight: 400;
+}
+
+.testimonial-info {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: var(--flex-gap);
+  padding-left: 2.5vw;
+  padding-right: var(--horizontal-padding);
+}
+.testimonial-info .title {
+  position: relative;
+}
+.testimonial-info .title .quote {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-150%, -50%);
+}
+.testimonial-info h4 {
+  color: #000;
+  font-family: "Alexandria";
+  font-size: calc(var(--fontsize-root) * 2);
+  font-style: normal;
+  font-weight: 600;
+}
+.testimonial-info span {
+  color: #000;
+  font-family: "Alexandria";
+  font-size: calc(var(--fontsize-root) * 1);
+  font-style: normal;
+  font-weight: 400;
+}
+.testimonial-info p {
+  color: #5f5f5f;
+  font-size: calc(var(--fontsize-root));
+  font-style: normal;
+  font-weight: 300;
+}
+.testimonial-info .row-buttons button img {
+  width: calc(var(--fontsize-root) * 2.5);
+  height: calc(var(--fontsize-root) * 2.5);
+}
+.testimonial-info .row-buttons button:nth-of-type(1) img {
+  transform: rotate(180deg);
+}
+
 .welcome-text button{
   border-radius: 118.817px;
 background: rgba(229, 226, 226, 0.10);
@@ -693,7 +823,7 @@ border: none;
 padding: .75rem 1.5rem;
 color: #FFF;
 font-family: "Typo";
-font-size: clamp(14px,1.2vw,1.4rem);
+font-size: clamp(18px,1.2vw,1.4rem);
 font-style: normal;
 display: flex;
 justify-content: center;
@@ -761,7 +891,9 @@ line-height: 100%; /* 0px */
   z-index: 2;
   width: 100%;
     height: 100vh;
-
+    display: flex;
+    flex-direction: column;
+align-items: center;
 }
 .meditation-wrapper {
   width: 150vw;
@@ -793,7 +925,7 @@ line-height: 100%; /* 0px */
   color: #FFF;
   text-align: center;
   font-family: Alexandria;
-  font-size: clamp(30px,6.2vw,5.8rem);
+  font-size: clamp(36px,6.2vw,5.8rem);
   font-style: normal;
   font-weight: 100;
   line-height: 100%; /* 0px */
@@ -803,18 +935,18 @@ line-height: 100%; /* 0px */
   text-align: center;
 
   font-family: Alexandria;
-  font-size: clamp(16px,1.7vw,1.8rem);
+  font-size: clamp(18px,1.7vw,1.8rem);
   font-style: normal;
   font-weight: 200;
   line-height: 130%; /* 0px */
 }
 .meditation-slider-wrapper {
-  width: 100%;
+  width: 90%;
   height: 100%;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
-  background-color: #2196F3;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -823,7 +955,7 @@ line-height: 100%; /* 0px */
 
 
 .journey-slider-wrapper {
-  width: calc(100% - calc(var(--horizontal-padding)) * 2);
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -859,6 +991,7 @@ line-height: 100%; /* 0px */
   background-color: transparent !important;
 }
 
+
 .journey-slider-wrapper swiper-container{
   width: 100%;
   height: 100%;
@@ -874,9 +1007,74 @@ line-height: 100%; /* 0px */
   overflow: visible !important;
 }
 
-.journey-slider-wrapper swiper-container swiper-slide img{
-  height: 30%;
+.div-slider{
+  height: 55%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius:20px;
+}
+
+.div-slider div{
+  height: 95%;
+  z-index: 3;
+  position: relative;
+  border-radius:20px;
+  flex-direction: column;
+  display: flex;
+  justify-content: end;
   width: 90%;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+
+.div-slider div h2{
+  font-family: Alexandria;
+  font-size: clamp(20px,1.95vw,2rem);
+  font-weight: 300;
+  line-height: 100%;
+  width: 90%;
+  text-align: start;
+  color: #F0F0F0;
+
+}
+
+.div-slider div p{
+  font-family: Alexandria;
+  font-size: clamp(16px,1.05vw,1.1rem);
+  font-weight: 200;
+  line-height: 115%;
+  text-align: start;
+  color: #F0F0F0;
+}
+
+.div-slider div button:hover{
+  transform: scale(1.1);
+}
+
+.div-slider div button{
+  font-family: Typo;
+  font-size: clamp(16px,1.05vw,1.1rem);
+  font-weight: 200;
+  line-height: 100%;
+  text-align: start;
+  color: #F0F0F0;
+  border-radius: 118.817px;
+  border: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  transition: all .4s ease;
+  padding: .6rem 1rem;
+  background: rgba(229, 226, 226, 0.10);
+  backdrop-filter: blur(5.389618873596191px);
+}
+
+.journey-slider-wrapper swiper-container swiper-slide img{
+  height: 100%;
+  position: absolute;
+  width: 100%;
   object-fit: cover;
   object-position: center top;
   border-radius:20px;
@@ -2461,6 +2659,10 @@ font-size: clamp(14px,1.25vw,1.5rem);
   height: 65vh;
   min-height: 350px;
   display: flex;
+  z-index: 5;
+  bottom: 0%;
+  left: 0%;
+  position: absolute;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -3677,10 +3879,34 @@ margin-bottom: 5rem;
 /*HOME RESPONSIVE*/
 
 .welcome-before img{
-  width: 70px;
+  width: 100px;
 }
 .welcome-text p{
   width: 90%;
+}
+
+.meditation-text{
+  width: 90%;
+  gap: .75rem;
+}
+
+.meditation-text h2{
+  width: 90%;
+}
+
+.meditation-wrapper img{
+  object-fit: cover;
+}
+
+.meditation-wrapper{
+  height: 230vh;
+  width: 100%;
+  
+  z-index: 1;
+}
+
+.welcome-wrapper{
+  clip-path: circle(13%);
 }
 
 .pause-music{

@@ -14,12 +14,20 @@ export  const SliderBook=()=> {
   
       const swiperParams = {
         enabled: true,
-        slidesPerView: 2.5,
         speed: 1000,
         centeredSlides: true,
         loop: true,
         slideToClickedSlide: true,
         allowTouchMove: false,
+        breakpoints: {
+          200: {
+            slidesPerView: 2,
+          },
+          1024:{
+            slidesPerView: 2.5,
+          }
+        
+        }
       };
   
       Object.assign(swiperRef.current, swiperParams);

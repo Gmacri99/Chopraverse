@@ -4,7 +4,7 @@ import logo from '../assets/logo.svg'
 export const Footer= ()=>{
     return (
     <>
-    <section className="footer">
+    <footer className="footer">
         <div className='content footer-top'>
         <div className='footer-top-div'>
             <h1>MetaHuman adventures <br /> unleashinh infinite possibilites</h1>
@@ -29,6 +29,6 @@ export const Footer= ()=>{
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
     </>)
 }

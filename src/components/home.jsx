@@ -11,30 +11,272 @@ import { register } from 'swiper/element/bundle';
 import { useEffect, useState } from 'react'
 import  '../styles/swiperStyle.css'
 import SliderFamosos from './SliderFamosos'
+import { useGSAP } from '@gsap/react'
+
+import { Observer } from 'gsap/all'
+import { cursos } from '../db/bd'
+import { useWindowSize } from './useWindowSize'
+import { Footer } from './footer'
 
 const Home = ({clase}) => {
 
     const [claseArecibir,setClaseArecibir]=useState('')
-    
+    const {width,height}=useWindowSize()
   
-    useEffect(()=>{const swiperEl = document.querySelector('#journey');
-    register()
+    gsap.registerPlugin(Observer);
+    gsap.set('section', {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  })
+    gsap.registerPlugin(useGSAP);
+    gsap.matchMedia
+  
+    useGSAP(()=>{
+  
+        let animating = false,
+        currentIndex = 0,
+        nextIndex = -1;
+        const maxIndex = 7;
+        const isAnimating = () => animating = true;
+        const notAnimating = () => animating = false;
     
+        const headerTimeline = gsap.timeline({
+            paused: true,
+            defaults: {
+                duration: 1,
+                // ease: 'sine.in',
+            }
+        })
+            .to('.navbar', {
+                yPercent: -100,
+            })
+  
+        const scrollTimeline = gsap.timeline({
+            paused: true,
+            defaults: {
+                duration: 1,
+                ease: 'power2.inOut',
+            },
+        })
+
+   
+
+        .to("#hero-section", {
+            yPercent: -100,
+            onReverseComplete: notAnimating,
+        })
+        .from('#welcome-section', {
+            yPercent: 100,
+        
+        }, "<")
+        .from('.welcome-before > p', {
+            y: '50vh',
+        }, "<")
+        .from('.welcome-wrapper', {
+            y: '150vh',
+            onComplete: notAnimating,
+        }, "<")
+        // INDEX: 2
+    .to('.welcome-wrapper', {
+        clipPath: 'circle(100%)',
+        onReverseComplete: notAnimating,
+    })
+    .to('.welcome-before', {
+        opacity: 0,
+    }, "<")
+    .from('.welcome-text', {
+        y: '50vh',
+        opacity: 1,
+        onComplete: notAnimating,
+    }, "<")
+        // INDEX: 3
+        .to('.welcome-wrapper', {
+             xPercent: -100,
+            clipPath: 'circle(50%)',
+            onReverseComplete: notAnimating,
+            duration: 0.75,
+        })
+        .to('.welcome-wrapper', {
+            xPercent: -100,
+            duration: 0.75,
+        }, '<0.25')
+        .from('#book-slider-section', {
+            xPercent: 200,
+            duration: 0.75,
+            onComplete: notAnimating,
+        }, "<")
+        // INDEX: 4
+    .from('#meditation-section', {
+        yPercent: 100,
+    })
+    .fromTo('.meditation-wrapper', {
+        clipPath: 'circle(10%)',
+    }, {
+        clipPath: 'circle(100%)',
+        onReverseComplete: notAnimating,
+        onComplete: notAnimating,
+    }, "<")
+    .from('.meditation-slider-wrapper', {
+        opacity: 0,
+        scale: 0.75,
+        onReverseComplete: notAnimating,
+    })
+    .to('#book-slider-section', {
+        yPercent: -100,
+        opacity: 0,
+    }, "<")
+    .to('.meditation-text', {
+        scale: 10,
+    }, "<")
     
+    .to('.meditation-wrapper', {
+         clipPath: 'circle(40%)',
+        y: width > 480 ? '-100vh' : width < 480 && height > 847 ? '-155vh' : width < 480 && height < 737 ? '-155vh' : '-50vh',
+    }, "<")
+    .to('.meditation-wrapper img', {
+        y: width > 480 ? '100vh' : '50vh',
+        scale: 1.1,
+    }, "<")
+    .to('.meditation-text', {
+        opacity: 0,
+        duration: 0.5,
+    }, "<25%").from('.journey-slider-buttons', {
+      opacity: 0,
+      duration: 0.5,
+      onComplete: notAnimating,
+  }, "<50%")
+  // // INDEX: 6
+  .to('.meditation-wrapper', {
+      y: '-200vh',
+      onReverseComplete: notAnimating,
+  })
+  .to('.meditation-wrapper > img', {
+      y: '200vh',
+  }, "<")
+  .to('.journey-slider', {
+      y: '-150vh',
+      // onStart: () => {
+      //     from = from + 1,
+      //     gsap.to(gsap.utils.toArray('.journey-slide > img'), {
+      //         y: '-35vh',
+      //         duration: 0.5,
+      //         ease: 'none',
+      //         stagger: 0.1,
+      //         from: from,
+      //     }, "<")
+      // },
+  }, '<')
+  .to('.journey-slider-buttons', {
+      opacity: 0,
+      duration: 0.5
+  }, "<")
+  .from('#testimonials-section', {
+      yPercent: 200,
+      onComplete: notAnimating
+  }, "<")
+      // INDEX: 7
+      .from('footer', {
+        yPercent: 100,
+        zIndex:4,
+        onReverseComplete: notAnimating,
+    })
+    .to('#testimonials-section', {
+        yPercent: -75,
+        onComplete: notAnimating,
+    }, "<")
+  
+  
+        function scrollListener(index, direction) {
+            if (index > maxIndex || index < 0) return;
+            
+            if (direction == -1) {
+                headerTimeline.play();
+                gsap.to('.navbar > #hero-section', {
+                    yPercent: -100,
+                    opacity: 0,
+                    duration: 1,
+                })
+            }
+            else if (direction == 1) {
+                headerTimeline.tweenTo(0);
+                gsap.to('.navbar > #hero-section', {
+                    yPercent: 0,
+                    opacity: 1,
+                    duration: 2,
+                })
+            }
+            isAnimating()
+            scrollTimeline.timeScale(0.75).tweenTo(index);
+            currentIndex = index;
+        }
+  
+        const observer = Observer.create({
+            target: window,
+            type: 'wheel, touch, scroll',
+            preventDefault: true,
+            onDown: () => !animating && scrollListener(currentIndex - 1, 1),
+            onUp: () => !animating && scrollListener(currentIndex + 1, -1),
+            wheelSpeed: -1
+        })
+        
+    })
+  
+    useEffect(()=>{
+      const swiperEl = document.querySelector('.journey-slider');
+      console.log(swiperEl)
+    // swiper parameters
+    const swiperParams = {
+        enabled: true,
+        speed: 1500,
+        breakpoints: {
+            180: {
+                spaceBetween: 20,
+                slidesPerView: 1.15,
+                centeredSlides: false,
+                allowTouchMove: true,
+            },
+            768: {
+              spaceBetween: 50,
+              slidesPerView: 3,
+              allowTouchMove: true,
+          },
+          1080: {
+              spaceBetween: 80,
+              slidesPerView: 4,
+              allowTouchMove: true,
+          },
+          1360: {
+              spaceBetween: 100,
+              slidesPerView: 4,
+              allowTouchMove: false,
+          },
+          1920: {
+              spaceBetween: 125,
+              slidesPerView: 4,
+              allowTouchMove: true,
+          },
+    
+        },
+        loop: true,
+    };
+    
+    Object.assign(swiperEl, swiperParams);
+    swiperEl.initialize();
     
     const journeyButtons = gsap.utils.toArray('.journey-button');
     
-    gsap.set(journeyButtons[1], {
+    gsap.set(journeyButtons[0], {
         scale: 1.2
     })
     let buttonsChange = gsap.timeline({
         paused: true,
     })
         .to(journeyButtons[0], {
-            scale: 1.2,
+            scale: 1,
         })
         .to(journeyButtons[1], {
-            scale: 1,
+            scale: 1.2,
         }, "<")
     
     journeyButtons.forEach((button, index) => {
@@ -56,8 +298,12 @@ const Home = ({clase}) => {
             }
         })
     })
+    
+    
+    
     }
     ,[])
+  
     
 
 
@@ -172,42 +418,25 @@ useEffect(() => {
       </div>
       <div className="meditation-slider-wrapper" id='journey'>
         <div className="journey-slider-wrapper">
-          <swiper-container class="journey-slider" init="false">
-            <swiper-slide class="journey-slide">
-              <img
-                src={Famoso1}
-                alt="journey_slide"
-                loading="lazy"
-              />
-            </swiper-slide>
-            <swiper-slide className="journey-slide">
-              <img
-                src="/sliders/journey_slider/journey_2.jpg"
-                alt="journey_slide"
-                loading="lazy"
-              />
-            </swiper-slide>
-            <swiper-slide class="journey-slide">
-              <img
-                src="/sliders/journey_slider/journey_3.jpg"
-                alt="journey_slide"
-                loading="lazy"
-              />
-            </swiper-slide>
-            <swiper-slide className="journey-slide">
-              <img
-                src="/sliders/journey_slider/journey_4.jpg"
-                alt="journey_slide"
-                loading="lazy"
-              />
-            </swiper-slide>
-            <swiper-slide className="journey-slide">
-              <img
-                src="/sliders/journey_slider/journey_5.jpg"
-                alt="journey_slide"
-                loading="lazy"
-              />
-            </swiper-slide>
+          <swiper-container id='journey-slider' class="journey-slider" init="false">
+            {cursos.map((el,index)=>
+            <>
+              <swiper-slide class="journey-slide" key={index}>
+                <div className='div-slider'>
+                  <img src={el.imageUrl} alt="journey_slide" loading="lazy"/>
+                  <div>
+                    <h2>{el.title}</h2>
+                    <p>{el.description}</p>
+                    <button>View more
+                      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                          <path d="M9.6705 0.301025C4.76972 0.301025 0.796875 4.27387 0.796875 9.17465C0.796875 14.0754 4.76972 18.0484 9.6705 18.0484C14.5713 18.0484 18.5443 14.0754 18.5443 9.17465C18.5388 4.27615 14.5692 0.30655 9.6705 0.301025ZM9.6705 17.161C5.25977 17.161 1.68419 13.5854 1.68419 9.17465C1.68419 4.76392 5.25977 1.18834 9.6705 1.18834C14.0812 1.18834 17.6568 4.76392 17.6568 9.17465C17.6518 13.5833 14.0791 17.1559 9.6705 17.161Z" fill="white"/>
+                          <path d="M8.63149 5.73491C8.44692 5.57357 8.16663 5.59242 8.00529 5.77683C7.84411 5.96141 7.86296 6.2417 8.04737 6.40304L11.2151 9.17466L8.04721 11.9464C7.86263 12.1078 7.84394 12.3881 8.00513 12.5725C8.16647 12.7571 8.44675 12.7759 8.63133 12.6146L12.1808 9.50872C12.2771 9.42455 12.3323 9.30269 12.3323 9.17466C12.3323 9.04662 12.2771 8.92492 12.1808 8.84059L8.63149 5.73491Z" fill="white"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </swiper-slide>
+            </>)}
           </swiper-container>
           <div className="journey-slider-buttons">
             <button className="journey-button">
@@ -220,7 +449,81 @@ useEffect(() => {
         </div>
       </div>
     </section>
+    <section id="testimonials-section">
+      <div className="testimonials-wrapper">
+        <div className="testimonials-slider-container backward">
+          <div>
+            <p>
+              What <br /><span className="weight">people</span>
+              <br />say <br /><span className="weight">about us</span>
+            </p>
+          </div>
+          <swiper-container class="testimonials-slider" init="false">
+            <swiper-slide>
+              <img
+                src="/sliders/testimonials_slider/slide_1.jpg"
+                alt="slide_testimonial"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <img
+                src="/sliders/testimonials_slider/slide_2.jpg"
+                alt="slide_testimonial"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <img
+                src="/sliders/testimonials_slider/slide_3.jpg"
+                alt="slide_testimonial"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <img
+                src="/sliders/testimonials_slider/slide_4.jpg"
+                alt="slide_testimonial"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <img
+                src="/sliders/testimonials_slider/slide_2.jpg"
+                alt="slide_testimonial"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <img
+                src="/sliders/testimonials_slider/slide_1.jpg"
+                alt="slide_testimonial"
+              />
+            </swiper-slide>
+          </swiper-container>
+        </div>
+        <div className="testimonial-info">
+          <div className="title">
+            <h4>The Highest Quality of All Perfomance!</h4>
+            <img className="quote" src="/icons/quotes_icon.svg" alt="quotes_icon" />
+          </div>
+          <span>Detailed Review:</span>
+          <p>
+            Discover the Art of Meditation with Deepak Chopra. Our meditation
+            section offers a variety of practices suitable for beginners and
+            seasoned practitioners alike.
+          </p>
+          <span>John Doe</span>
+          <p>11/02/2024</p>
+          <div className="row-buttons testimonials-buttons">
+            <button>
+              <img src="/icons/black_arrow.svg" alt="arrow_button" />
+            </button>
+            <button>
+              <img src="/icons/black_arrow.svg" alt="arrow_button" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
+
+        <Footer />
         </main>
     </>
   )
