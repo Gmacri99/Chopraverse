@@ -201,12 +201,7 @@ const Home = ({clase}) => {
                     yPercent: -100,
                     opacity: 0,
                     duration: 1,
-                }),
-                gsap.to('.menu-desplegable', {
-                  opacity: 0,
-                  duration: 1,
-                  zIndex:-1001
-              })
+                })
             }
             else if (direction == 1) {
                 headerTimeline.tweenTo(0);

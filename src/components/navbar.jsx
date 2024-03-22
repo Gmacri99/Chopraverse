@@ -14,21 +14,21 @@ const Navbar = ({openCart,login,register,data,register2}) => {
     },[data])
     
     const openDesplegable = ()=>{
-      /*  const abrir = document.getElementById('abrir')
+      const abrir = document.getElementById('abrir')
         const cerrar = document.getElementById('cerrar')
         const menu = document.getElementById('menu')
         cerrar.classList.add('cart-menu-active')
         abrir.classList.remove('cart-menu-active')
-        menu.classList.remove('opacity-0')*/
+        menu.classList.remove('opacity-0')
     }
 
     const closeDesplegable = ()=>{
-       /* const abrir = document.getElementById('abrir')
+        const abrir = document.getElementById('abrir')
         const cerrar = document.getElementById('cerrar')
         const menu = document.getElementById('menu')
         abrir.classList.add('cart-menu-active')
         cerrar.classList.remove('cart-menu-active')
-        menu.classList.add('opacity-0')*/
+        menu.classList.add('opacity-0')
     }
 
   return (
