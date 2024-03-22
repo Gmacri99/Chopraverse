@@ -5,9 +5,11 @@ export const Footer= ()=>{
     return (
     <>
     <footer className="footer">
+   
         <div className='content footer-top'>
+        <img src={logo} alt="Logo-chopraverse" className='only-mobile' />
         <div className='footer-top-div'>
-            <h1>MetaHuman adventures <br /> unleashinh infinite possibilites</h1>
+            <h1>MetaHuman adventures  unleashinh infinite possibilites</h1>
             <p>Join us in exploring a universe where spirituality meets technology, offering you a unique journey toward inner peace and enlightenment</p>
         </div>
         <div className='footer-top-div2'>

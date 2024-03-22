@@ -1,16 +1,21 @@
 import video from '../assets/bgVideo.mp4'
 import pause from '../assets/pause.svg'
 import bg1 from '../assets/bg/fondo1.png'
+import testimonio1 from '../assets/Rectangle 13.png'
+import testimonio2 from '../assets/Rectangle 14.png'
+import testimonio3 from '../assets/Rectangle 15.png'
+import testimonio4 from '../assets/Rectangle 20.png'
+import testimonio5 from '../assets/Rectangle 21.png'
 import bg4 from '../assets/bg/bg4.jpeg'
 import logo from '../assets/logo.svg'
+import quote from '../assets/quote.svg'
 import arrow from '../assets/black_arrow.svg'
 import gsap from 'gsap'
-import Famoso1 from '../assets/Rectangle9.jpg'
-import { SliderBook } from './SliderBook'
 import { register } from 'swiper/element/bundle';
+import { SliderBook } from './SliderBook'
 import { useEffect, useState } from 'react'
 import  '../styles/swiperStyle.css'
-import SliderFamosos from './SliderFamosos'
+
 import { useGSAP } from '@gsap/react'
 
 import { Observer } from 'gsap/all'
@@ -182,7 +187,7 @@ const Home = ({clase}) => {
         onReverseComplete: notAnimating,
     })
     .to('#testimonials-section', {
-        yPercent: -75,
+        yPercent: width > 480 ? -75 : -100,
         onComplete: notAnimating,
     }, "<")
   
@@ -196,7 +201,12 @@ const Home = ({clase}) => {
                     yPercent: -100,
                     opacity: 0,
                     duration: 1,
-                })
+                }),
+                gsap.to('.menu-desplegable', {
+                  opacity: 0,
+                  duration: 1,
+                  zIndex:-1001
+              })
             }
             else if (direction == 1) {
                 headerTimeline.tweenTo(0);
@@ -205,6 +215,7 @@ const Home = ({clase}) => {
                     opacity: 1,
                     duration: 2,
                 })
+                
             }
             isAnimating()
             scrollTimeline.timeScale(0.75).tweenTo(index);
@@ -223,6 +234,7 @@ const Home = ({clase}) => {
     })
   
     useEffect(()=>{
+      register();
       const swiperEl = document.querySelector('.journey-slider');
       console.log(swiperEl)
     // swiper parameters
@@ -299,11 +311,96 @@ const Home = ({clase}) => {
         })
     })
     
+    const testimonialsSwiper = document.querySelector('.testimonials-slider');
+const testimonialsSlideContainer = document.querySelector('.testimonials-slider-container');
+
+// swiper parameters
+const testimonialsSwiperParams = {
+    enabled: true,
+    speed: 1500,
+    allowTouchMove: false,
+    isEnd: true,
+    loop: true,
+    breakpoints: {
+      180: {
+          spaceBetween: 20,
+          slidesPerView: 4,
+          initialSlide: 5,
+      },
+      768: {
+        spaceBetween: 20,
+        slidesPerView: 4,
+        initialSlide: 5,
+    },
+    1080: {
+      spaceBetween: 20,
+      slidesPerView: 5,
+      initialSlide: 5,
+    },
+    1360: {
+      spaceBetween: 20,
+      slidesPerView: 5,
+      initialSlide: 5,
+    },
+    1920: {
+      spaceBetween: 20,
+      slidesPerView: 5,
+      initialSlide: 5,
+    },
+
+  },
+
+};
+
+Object.assign(testimonialsSwiper, testimonialsSwiperParams);
+testimonialsSwiper.initialize();
+
+const testimonialsButtons = gsap.utils.toArray('.testimonials-buttons > button');
+
+gsap.set(testimonialsButtons[1], {
+    scale: 1.2
+})
+let testButtonsChange = gsap.timeline({
+    paused: true,
+})
+    .to(testimonialsButtons[0], {
+        scale: 1.2,
+    })
+    .to(testimonialsButtons[1], {
+        scale: 1,
+    }, "<")
+
+    console
+
+testimonialsButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        if (testimonialsSwiper.swiper.animating) return;
+        switch (index) {
+            case 0:
+                testimonialsSwiper.swiper.slideNext();
+                testButtonsChange.tweenTo(0);
+                testimonialsSlideContainer.classList.add('backward');
+                testimonialsSlideContainer.classList.remove('forward');
+                break;
+            case 1:
+                testimonialsSwiper.swiper.slidePrev();
+                testButtonsChange.tweenTo(testButtonsChange.totalDuration());
+                testimonialsSlideContainer.classList.add('forward');
+                testimonialsSlideContainer.classList.remove('backward');
+                break;
+            default:
+                testimonialsSwiper.swiper.slidePrev();
+                testButtonsChange.reverse(0)
+                break;
+        }
+    })
+})
     
+
     
     }
     ,[])
-  
+
     
 
 
@@ -461,37 +558,37 @@ useEffect(() => {
           <swiper-container class="testimonials-slider" init="false">
             <swiper-slide>
               <img
-                src="/sliders/testimonials_slider/slide_1.jpg"
+                src={testimonio1}
                 alt="slide_testimonial"
               />
             </swiper-slide>
             <swiper-slide>
               <img
-                src="/sliders/testimonials_slider/slide_2.jpg"
+                src={testimonio2}
                 alt="slide_testimonial"
               />
             </swiper-slide>
             <swiper-slide>
               <img
-                src="/sliders/testimonials_slider/slide_3.jpg"
+                src={testimonio3}
                 alt="slide_testimonial"
               />
             </swiper-slide>
             <swiper-slide>
               <img
-                src="/sliders/testimonials_slider/slide_4.jpg"
+                src={testimonio4}
                 alt="slide_testimonial"
               />
             </swiper-slide>
             <swiper-slide>
               <img
-                src="/sliders/testimonials_slider/slide_2.jpg"
+                src={testimonio5}
                 alt="slide_testimonial"
               />
             </swiper-slide>
             <swiper-slide>
               <img
-                src="/sliders/testimonials_slider/slide_1.jpg"
+                src={testimonio5}
                 alt="slide_testimonial"
               />
             </swiper-slide>
@@ -500,7 +597,7 @@ useEffect(() => {
         <div className="testimonial-info">
           <div className="title">
             <h4>The Highest Quality of All Perfomance!</h4>
-            <img className="quote" src="/icons/quotes_icon.svg" alt="quotes_icon" />
+            <img className="quote" src={quote} alt="quotes_icon" />
           </div>
           <span>Detailed Review:</span>
           <p>
@@ -512,10 +609,10 @@ useEffect(() => {
           <p>11/02/2024</p>
           <div className="row-buttons testimonials-buttons">
             <button>
-              <img src="/icons/black_arrow.svg" alt="arrow_button" />
+              <img src={arrow} alt="arrow_button" />
             </button>
             <button>
-              <img src="/icons/black_arrow.svg" alt="arrow_button" />
+              <img src={arrow} alt="arrow_button" />
             </button>
           </div>
         </div>
