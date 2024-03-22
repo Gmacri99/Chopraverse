@@ -24,9 +24,11 @@ export  const SliderBook=()=> {
             slidesPerView: 2,
           },
           1024:{
+            slidesPerView: 2.15,
+          },
+          1920:{
             slidesPerView: 2.5,
           }
-        
         }
       };
   

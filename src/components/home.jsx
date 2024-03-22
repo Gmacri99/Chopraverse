@@ -259,7 +259,7 @@ const Home = ({clase}) => {
               allowTouchMove: true,
           },
           1360: {
-              spaceBetween: 100,
+              spaceBetween: 70,
               slidesPerView: 4,
               allowTouchMove: false,
           },
