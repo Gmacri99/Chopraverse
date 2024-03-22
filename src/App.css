@@ -4303,7 +4303,7 @@ transition: all .4s ease;
 }
 
 .pause-music{
-  padding-bottom: 6rem;
+  bottom: 6rem;
 }
 
 #hero-section {
