@@ -14,6 +14,10 @@
   src: url('../src/fonts/Montserrat-Regular.ttf');
 }
 
+body{
+  width: 100vw;
+}
+
 .only-mobile{
   display: none;
 }
@@ -133,6 +137,7 @@ display: none;
   z-index: 1002;
   align-items: start;
   height: 100%;
+  position: relative;
 }
 
 .login{
@@ -4032,7 +4037,7 @@ margin-bottom: 5rem;
   backdrop-filter: blur(15.389618873596191px);
   height: 18rem;
   top: 0%;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   z-index: 1001;
   display: block;
