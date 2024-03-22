@@ -4125,10 +4125,6 @@ transition: all .4s ease;
   border-radius: 0px;
 }
 
-.section-cart{
-  display: none;
-}
-
 .testimonials-wrapper{
   flex-direction: column;
   gap: 2.35rem;
