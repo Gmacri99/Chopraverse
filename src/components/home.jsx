@@ -337,12 +337,7 @@ const testimonialsSwiperParams = {
       slidesPerView: 5,
       initialSlide: 5,
     },
-    1360: {
-      spaceBetween: 20,
-      slidesPerView: 5,
-      initialSlide: 5,
-    },
-    1920: {
+    1280: {
       spaceBetween: 20,
       slidesPerView: 5,
       initialSlide: 5,
