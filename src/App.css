@@ -4120,7 +4120,7 @@ transition: all .4s ease;
 
 .testimonials-wrapper{
   flex-direction: column;
-  gap: 1.55rem;
+  gap: 2.35rem;
 }
 .footer-top-div2 button{
   padding: .75rem 2.75rem;
