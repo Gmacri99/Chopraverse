@@ -4022,6 +4022,11 @@ margin-bottom: 5rem;
   height: auto;
 }
 
+.testimonial-info .row-buttons button img {
+  width: 2rem;
+  height:auto;
+}
+
 .menu-desplegable{
   background: rgba(15, 15, 15, 0.685);
   backdrop-filter: blur(15.389618873596191px);
