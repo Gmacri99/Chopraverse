@@ -137,7 +137,7 @@ const Home = ({clase}) => {
     
     .to('.meditation-wrapper', {
          clipPath: 'circle(40%)',
-        y: width > 480 ? '-100vh' : width < 480 && height > 847 ? '-155vh' : width < 480 && height < 737 ? '-155vh' : '-50vh',
+        y: width > 480 ? '-100vh' : width < 480 && height > 847 ? '-155vh' : width < 480 && height < 737 ? '-55vh' : '-50vh',
     }, "<")
     .to('.meditation-wrapper img', {
         y: width > 480 ? '100vh' : '50vh',
