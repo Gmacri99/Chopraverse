@@ -4032,6 +4032,10 @@ margin-bottom: 5rem;
   height: auto;
 }
 
+.journey-slider-buttons{
+  gap: 1.5rem;
+}
+
 footer{
   height: 100dvh !important;
 }
