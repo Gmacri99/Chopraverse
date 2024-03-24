@@ -251,12 +251,12 @@ const Home = ({clase}) => {
               allowTouchMove: true,
           },
           1080: {
-              spaceBetween: 80,
+              spaceBetween: 20,
               slidesPerView: 4,
               allowTouchMove: true,
           },
           1360: {
-              spaceBetween: 70,
+              spaceBetween: 40,
               slidesPerView: 4,
               allowTouchMove: false,
           },
@@ -322,7 +322,7 @@ const testimonialsSwiperParams = {
       180: {
           spaceBetween: 20,
           slidesPerView: 4,
-          initialSlide: 5,
+          initialSlide: 4,
       },
       768: {
         spaceBetween: 20,

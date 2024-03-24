@@ -77,6 +77,28 @@
     transform: rotate(180deg);
   }
 
+  @media screen and (min-width: 1280px) and (max-width: 1439px){
+    .sliderBooksHome button {
+      left: 58%;
+    }
+
+    .sliderBooksHome button:nth-of-type(1) {
+      transform: translate(-47vw,-50%);
+    }
+  
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1280px){
+  .sliderBooksHome button {
+    left: 58%;
+  }
+
+  .sliderBooksHome button:nth-of-type(1) {
+    transform: translate(-47vw,-50%);
+  }
+
+}
+
   @media screen and (max-width: 480px){
       .sliderBooksHome swiper-container swiper-slide {
         flex-direction: column;
