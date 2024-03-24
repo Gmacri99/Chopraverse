@@ -4113,6 +4113,11 @@ transition: all .4s ease;
   fill: #FFFFFF !important;
 }
 
+#root{
+  position: relative;
+  width: 100vw;
+}
+
 .logo-header{
   z-index: 1003;
 }
