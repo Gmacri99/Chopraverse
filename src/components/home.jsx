@@ -71,7 +71,7 @@ const Home = ({clase}) => {
         })
         .from('#welcome-section', {
             yPercent: 100,
-            zIndex:6
+
         
         }, "<")
         .from('.welcome-before > p', {
@@ -82,13 +82,16 @@ const Home = ({clase}) => {
             onComplete: notAnimating,
         }, "<")
         // INDEX: 2
+        
     .to('.welcome-wrapper', {
         clipPath: 'circle(100%)',
+        zIndex:'6',
         onReverseComplete: notAnimating,
     })
     .to('.welcome-before', {
         opacity: 0,
     }, "<")
+    
     .from('.welcome-text', {
         y: '50vh',
         opacity: 1,

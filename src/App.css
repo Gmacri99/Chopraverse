@@ -4027,49 +4027,9 @@ margin-bottom: 5rem;
   height: auto;
 }
 
-.welcome-wrapper img{
-  background-color: red;
-}
-
-html{
-  background-image: url('../src/assets/bg/fondo1.png') !important;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  min-height: 100vh;
-  background-size: 100% 100% !important;
-  z-index: -5;  
-
-}
-
-
-
-#root{
-  background-image: url('../src/assets/bg/fondo1.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100% !important;
-  background-position: center;
-  background-color: blue !important;
-  width: 100%;
-  height: 100%;
-}
-
-body{
-  background-image: url('../src/assets/bg/fondo1.png') !important;
-  background-repeat: no-repeat;
-  background-size: 100% 100% !important;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-  background-color: red !important;
-}
-
-main{
-  background-color: transparent;
-}
 
 footer{
-  height: 100vh !important;
+  height: 95dvh !important;
 }
 
 .footer-top{
