@@ -4034,8 +4034,8 @@ html{
   width: 100%;
   min-height: 100vh;
   background-size: 100% 100% !important;
-  z-index: 5;
-  background-color: transparent !important;
+  z-index: 5;  
+  background-color: green !important;
 }
 
 
@@ -4043,9 +4043,9 @@ html{
 #root{
   background-image: url('../src/assets/bg/fondo1.png');
   background-repeat: no-repeat;
-  background-color: transparent !important;
   background-size: 100% 100% !important;
   background-position: center;
+  background-color: blue !important;
   width: 100%;
   height: 100%;
 }
@@ -4057,7 +4057,7 @@ body{
   background-position: center;
   width: 100%;
   height: 100%;
-  background-color: transparent !important;
+  background-color: red !important;
 }
 
 main{
