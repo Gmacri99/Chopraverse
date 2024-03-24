@@ -4034,6 +4034,9 @@ html{
   background-position: center;
 }
 
+.footer-sub{
+  height: fit-content;
+}
 
 #root{
   background-image: url('../src/assets/bg/fondo1.png');
