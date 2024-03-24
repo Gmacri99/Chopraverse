@@ -4028,14 +4028,14 @@ margin-bottom: 5rem;
 }
 
 html{
-  background-image: url('../src/assets/bg/fondo1.png');
+  background-image: url('../src/assets/bg/fondo1.png') !important;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   min-height: 100vh;
   background-size: 100% 100% !important;
   z-index: 5;  
-  background-color: green !important;
+
 }
 
 
