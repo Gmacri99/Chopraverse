@@ -4027,7 +4027,9 @@ margin-bottom: 5rem;
   height: auto;
 }
 
-
+.welcome-wrapper img{
+  background-color: red;
+}
 
 html{
   background-image: url('../src/assets/bg/fondo1.png') !important;
