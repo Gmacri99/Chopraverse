@@ -63,7 +63,7 @@ button{
 
 html{
   overflow-x: hidden !important;
-  background-color: #000 ;
+
 }
 
 
@@ -4025,6 +4025,10 @@ margin-bottom: 5rem;
   display: flex;
   width: 100px;
   height: auto;
+}
+
+footer{
+  height: 90dvh;
 }
 
 .testimonial-info .row-buttons button img {
