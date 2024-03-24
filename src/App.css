@@ -3430,8 +3430,17 @@ margin-bottom: 5rem;
     ::-webkit-scrollbar{
       display: none !important;
     }
+    .testimonial-info{
+      gap: .25rem;
+    }
+    .testimonials-slider-container div:nth-of-type(1){
+      height: 58%;
+      width: 63%;
+    }
 
-    
+    .testimonial-info .title .quote{
+      left: 1%;
+    }
 
     }
 
@@ -3444,6 +3453,21 @@ margin-bottom: 5rem;
   padding-bottom: 2rem;
   margin-bottom: 5rem;
         height: fit-content;
+      }
+
+      .testimonial-info .title .quote{
+        left: 1.5%;
+      }
+
+      .testimonials-slider-container div:nth-of-type(1){
+        height: 59%;
+        width: 63%;
+      }
+
+ 
+
+      .testimonial-info{
+        gap: 0rem;
       }
       
       .testimonials-slider-container.backward
