@@ -10,14 +10,14 @@ import Home from './components/home'
 
 function App() {
 
- /*
+ 
   const [renderCount, setRenderCount] = useState(0);
 
   useEffect(() => {
     if (renderCount < 2) {
       setRenderCount(prevCount => prevCount + 1);
     }
-  }, [renderCount]);*/
+  }, [renderCount]);
 
   
   const [claseRecibida,setClaseRecibida]= useState('move-left')

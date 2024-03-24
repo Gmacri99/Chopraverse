@@ -4034,6 +4034,21 @@ html{
   background-position: center;
 }
 
+
+#root{
+  background-image: url('../src/assets/bg/fondo1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+body{
+  background-image: url('../src/assets/bg/fondo1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 footer{
   height: 90dvh;
 }
