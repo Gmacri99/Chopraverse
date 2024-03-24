@@ -4128,6 +4128,7 @@ transition: all .4s ease;
 
 .section-cart{
   border-radius: 0px;
+  position: absolute;
 }
 
 .testimonials-wrapper{
