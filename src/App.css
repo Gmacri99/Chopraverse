@@ -4131,6 +4131,9 @@ footer{
 transition: all .4s ease;
 }
 
+.div-form-content{
+  z-index: 1000;
+}
 
 .menu-desplegable ul{
   margin-top: 5.5rem;
@@ -4203,6 +4206,7 @@ transition: all .4s ease;
 #root{
   position: relative;
   width: 100vw;
+  overflow: hidden;
 }
 
 .logo-header{
