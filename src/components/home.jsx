@@ -333,8 +333,8 @@ const testimonialsSwiperParams = {
     breakpoints: {
       180: {
           spaceBetween: 20,
-          slidesPerView: 4,
-          initialSlide: 4,
+          slidesPerView: 5,
+          initialSlide: 5,
       },
       768: {
         spaceBetween: 20,

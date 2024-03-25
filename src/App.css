@@ -4189,6 +4189,11 @@ transition: all .4s ease;
   opacity: 1;
 }
 
+.menu-desplegable ul li:hover .svg-opaco2{
+  opacity: 0;
+}
+
+
 .padre-menu{
   position: absolute;
   width: 100%;
@@ -4210,6 +4215,7 @@ transition: all .4s ease;
 .svg-opaco2{
   position: relative;
   opacity: 1;
+  transition: all .4s ease;
 }
 
 .menu-desplegable ul li:hover{
@@ -4595,11 +4601,13 @@ footer{
 }
 
 .footer-top{
-  height: 45% !important;
+  height: 50% !important;
 }
 
 .footer-sub{
-  height: 55% !important;
+  min-height: 50% !important;
+  height: 50%;
+  max-height: 300px;
 }
 
 
@@ -4813,7 +4821,7 @@ transition: all .4s ease;
 
 .testimonials-slider-container.backward
   swiper-container
-  swiper-slide:nth-of-type(5)
+  swiper-slide:nth-of-type(6)
   img {
     height: 70%;
 }
@@ -4826,7 +4834,7 @@ transition: all .4s ease;
 
 .testimonials-slider-container.forward
   swiper-container
-  swiper-slide:nth-of-type(4)
+  swiper-slide:nth-of-type(5)
   img {
   height: 70%;
 }
@@ -5367,7 +5375,7 @@ height: 70px;
              }
 
              .products-in-cart2::-webkit-scrollbar{
-              display: none !important;
+              display: block !important;
              }
              
              .products-in-cart2 p{
