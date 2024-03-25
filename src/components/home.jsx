@@ -81,6 +81,10 @@ const Home = ({clase}) => {
             y: '150vh',
             onComplete: notAnimating,
         }, "<")
+        .to('.navbar', {
+          backgroundColor:'#000000BB',
+          onReverseComplete: notAnimating,
+      },"<")
         // INDEX: 2
         
     .to('.welcome-wrapper', {
@@ -88,10 +92,14 @@ const Home = ({clase}) => {
         zIndex:'6',
         onReverseComplete: notAnimating,
     })
+    
     .to('.welcome-before', {
         opacity: 0,
     }, "<")
-    
+    .to('.navbar', {
+      backgroundColor:'#000000BB',
+      onReverseComplete: notAnimating,
+  },"<")
     .from('.welcome-text', {
         y: '50vh',
         opacity: 1,
@@ -104,6 +112,10 @@ const Home = ({clase}) => {
             onReverseComplete: notAnimating,
             duration: 0.75,
         })
+        .to('.navbar', {
+          backgroundColor:'#000000BB',
+          onReverseComplete: notAnimating,
+      },"<")
         .to('.welcome-wrapper', {
             xPercent: -100,
             duration: 0.75,
@@ -139,7 +151,7 @@ const Home = ({clase}) => {
     
     .to('.meditation-wrapper', {
          clipPath: 'circle(40%)',
-        y: width > 480 ? '-100vh' : width < 480 && height > 847 ? '-155vh' : width < 480 && height < 737 ? '-55vh' : '-50vh',
+        y: width > 480  ? '-100vh' : width < 480 && height > 847 ? '-155vh' : width < 480 && height < 737 ? '-55vh' : '-50vh',
     }, "<")
     .to('.meditation-wrapper img', {
         y: width > 480 ? '100vh' : '50vh',
@@ -245,9 +257,9 @@ const Home = ({clase}) => {
                 centeredSlides: false,
                 allowTouchMove: true,
             },
-            768: {
+            480: {
               spaceBetween: 50,
-              slidesPerView: 3,
+              slidesPerView: 2.25,
               allowTouchMove: true,
           },
           1080: {
@@ -331,8 +343,8 @@ const testimonialsSwiperParams = {
     },
     1080: {
       spaceBetween: 20,
-      slidesPerView: 5,
-      initialSlide: 5,
+      slidesPerView: 4,
+      initialSlide: 4,
     },
     1280: {
       spaceBetween: 20,
