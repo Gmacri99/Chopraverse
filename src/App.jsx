@@ -73,9 +73,9 @@ useEffect(()=>{
       
       <Navbar openCart={openCart} login={login} register={register} register2={register2}  data={datos}/>
       <Cart clase={claseRecibida} handleClose={handleClose} /> 
-      {/*<Login renderizar={textoRecibido} clase={claseRecibida2} datos={setDatos} setTextoRecibido3={setTextoRecibido3}/>*/}
+      {<Login renderizar={textoRecibido} clase={claseRecibida2} datos={setDatos} setTextoRecibido3={setTextoRecibido3}/>}
       {/*<Checkout/>*/}
-      {<Home clase={textoRecibido3}/>}
+      {textoRecibido3 ? <Home clase={textoRecibido3}/> : null}
       {/*<Account clase={claseRecibida4}/>*/}
     
     </>

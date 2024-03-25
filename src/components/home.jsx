@@ -25,7 +25,7 @@ import { Footer } from './footer'
 
 const Home = ({clase}) => {
 
-    const [claseArecibir,setClaseArecibir]=useState('')
+    const [claseArecibir,setClaseArecibir]=useState('move-right')
     const {width,height}=useWindowSize()
   
     gsap.registerPlugin(Observer);
@@ -35,7 +35,7 @@ const Home = ({clase}) => {
     left: 0,
   })
     gsap.registerPlugin(useGSAP);
-    gsap.matchMedia
+    
   
     useGSAP(()=>{
   

@@ -10,6 +10,7 @@ const Login = ({clase,renderizar,datos,setTextoRecibido3}) => {
     const [text2, setText2]= useState(renderizar=='Sign in' ?  'Login' : 'Sign up')
     const [text3, setText3]= useState(false)
     const [text4, setText4]= useState(false)
+    const [text5, setText5]= useState(false)
     const [datosUsuario, setDatosUsuario]= useState({
         email: '',
         password: ''
@@ -19,6 +20,10 @@ const Login = ({clase,renderizar,datos,setTextoRecibido3}) => {
         setText3( text3 ? false: true)
         setText(text!=='Sign in' ?  'Sign in' : 'Sign up' )
         setText2(text2!=='Login' ? 'Login'  : 'Sign up' )
+    }
+
+    const handleChangetext2=()=>{
+        setText5( text5 ? false: true)
     }
 
     const handleChange=(e)=>{
@@ -55,12 +60,12 @@ const Login = ({clase,renderizar,datos,setTextoRecibido3}) => {
                 <h2>{text} to Chopraverse</h2>
                 <div className='formulario-chopraverse' >
                     <div className='input'>
-                        <label htmlFor="email">E-mail</label>
-                        <input value={datosUsuario.email} onChange={(e)=>handleChange(e)} type="email" name='email' />
+                        <label htmlFor="email"> {!text5 ? ' E-mail' : 'Password'}</label>
+                        <input value={datosUsuario.email} onChange={(e)=>handleChange(e)} type={!text5 ? 'email' : 'password'} name='email' required/>
                     </div>
                     <div className='input'>
-                        <label htmlFor="password">Password</label>
-                        <input value={datosUsuario.password} onChange={(e)=>handleChange(e)} type="password" name='password' />
+                        <label htmlFor="password">{!text5 ? 'Password' : 'Confirm password'} </label>
+                        <input value={datosUsuario.password} onChange={(e)=>handleChange(e)} type="password" name='password' required/>
                     </div>
                     <button onClick={(e)=>handleSubmit(e)}>{text2}</button>
                 </div>
@@ -75,6 +80,7 @@ const Login = ({clase,renderizar,datos,setTextoRecibido3}) => {
                     <div>  <button> <img src={apple}alt="" /> {text2} with Apple</button></div>
                 </div>
                 <p className='have-account'>{text2==='Login' ? "Don't have an account?" : "have an account?" } <span onClick={()=>handleChangetext()}> {text}</span></p>
+                <p className='have-account'>Don't remember your <span onClick={()=>handleChangetext2()}>Password?</span></p>
             </div>
         </div>
     </div>

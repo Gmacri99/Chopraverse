@@ -3442,21 +3442,47 @@ margin-bottom: 5rem;
       left: 1%;
     }
 
+    .div-home-buttons{
+      width: 90%;
+    }
+
+    .div-form{
+      width: 45%;
+margin-top:8rem;
+padding-bottom: 2rem;
+;
+
+    }
+
+    .login{
+      height: fit-content;
+      padding-bottom: 2rem;
+    }
+
     }
 
 
     @media screen and (min-width:1280px) and (max-width:1439px) {
 
       .div-form{
-        width: 50%;
-  margin-top: 12rem;
+        width: 40%;
+  margin-top: 9rem;
   padding-bottom: 2rem;
-  margin-bottom: 5rem;
+;
         height: fit-content;
+      }
+
+      .login{
+        height: fit-content;
+        padding-bottom: 2rem;
       }
 
       .testimonial-info .title .quote{
         left: 1.5%;
+      }
+
+      .div-home-buttons{
+        width: 91.5%;
       }
 
       .testimonials-slider-container div:nth-of-type(1){
@@ -3746,6 +3772,20 @@ margin-bottom: 5rem;
             height: 70%;
             margin-top: .5rem;
           }
+
+          .div-form{
+            width: 45%;
+      margin-top:8rem;
+      padding-bottom: 2rem;
+      ;
+      
+          }
+      
+          .login{
+            height: fit-content;
+            padding-bottom: 2rem;
+          }
+      
 
           .testimonials-slider-container.backward
   swiper-container
