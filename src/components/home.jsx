@@ -74,6 +74,11 @@ const Home = ({clase}) => {
 
         
         }, "<")
+        .to(".pause-music", {
+          y: '100vh',
+          backgroundColor:'#00000082',
+          onReverseComplete: notAnimating,
+      }, "<")
         .from('.welcome-before > p', {
             y: '50vh',
         }, "<")
@@ -200,6 +205,10 @@ const Home = ({clase}) => {
         zIndex:4,
         onReverseComplete: notAnimating,
     })
+    .to(".pause-music", {
+      opacity:0,
+      onReverseComplete: notAnimating,
+  }, "<")
     .to('#testimonials-section', {
         yPercent: width > 480 ? -75 : -100,
         onComplete: notAnimating,
