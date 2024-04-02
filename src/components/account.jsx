@@ -2,7 +2,7 @@ import avatar from '../assets/Avatar.svg'
 import logout from '../assets/logout.svg'
 import bookFace from '../assets/Rectangle8.png'
 import background from '../assets/Rectangle75.png'
-import Book from '../assets/book.png'
+import Book from '../assets/book.webp'
 import wireless from '../assets/wireless.svg'
 import card from '../assets/card.png'
 import garrapata from '../assets/garrapata.svg'
@@ -17,12 +17,86 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 import { Footer } from './footer'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { cursos } from '../db/bd'
+import { register } from 'swiper/element'
 
 const Account = ({clase}) => {
 
   const [miVariable2, setMiVariable2] = useState(false);
   const [clase2, setclase2] = useState('');
+
+  const swiperRef = useRef(null);
+  
+
+  useEffect(() => {
+      register()
+  
+      const swiperParams = {
+        enabled: true,
+        speed: 1000,
+        centeredSlides: false,
+        loop: true,
+        slideToClickedSlide: false,
+        allowTouchMove: true,
+        breakpoints: {
+          200: {
+            slidesPerView: 1.5,
+            spaceBetween:15,
+          },
+          480:{
+              slidesPerView: 3,
+              spaceBetween:20,
+          },
+          767:{
+              slidesPerView: 3.5,
+              spaceBetween:20,
+          },
+          1024:{
+              slidesPerView: 4.5,
+              spaceBetween:30,
+              initialSlides:0
+            },
+            1280:{
+              slidesPerView: 4,
+              spaceBetween:30,
+              initialSlides:0
+            },
+          1440:{
+            slidesPerView: 4,
+            spaceBetween:20,
+            initialSlides:0
+          },
+          1600:{
+              slidesPerView: 4.5,
+              spaceBetween:30,
+              initialSlides:0
+            },
+            1921:{
+              slidesPerView: 5,
+              spaceBetween:30,
+              initialSlides:0
+            },
+        }
+      };
+  
+      Object.assign(swiperRef.current, swiperParams);
+      swiperRef.current.initialize();
+
+
+
+    }, []);
+
+    const [index,setIndex]= useState(0)
+    const handlePrev=()=>{
+      swiperRef?.current.swiper.slidePrev()
+      setIndex(swiperRef.current.swiper.realIndex)
+   }
+   
+   const handleNext=()=>{
+      swiperRef?.current.swiper.slideNext()
+      setIndex(swiperRef.current.swiper.realIndex)
+   }
 
     useEffect(()=>{
       const elemento = document.querySelector('.div-left-account ul');
@@ -470,7 +544,7 @@ function handleSwipe() {
          
         </div>
         <div className='div-noticia'>
-          <div className='libro-nuevo'>
+          <div className='libro-nuevo move-left'>
             <h3>Upcoming Book</h3>
             <div className='libro-nuevo-div'>
               <img src={yellow} alt="book-yellow" />
@@ -480,9 +554,55 @@ function handleSwipe() {
               </div>
             </div>
           </div>
+          <div className='libro-nuevo '>
+            <h3>Coming soon</h3>
+            <div className='div-slider-meditations slider-soon'>
+    <swiper-container  ref={swiperRef}  init="false">
+            {cursos.map((el,index)=>
+            <>
+              <swiper-slide  key={index}>
+                <div  className='info-slide-meditations height-more'>
+                    <span className='bg-slide'></span>
+                  <img src={el.imageUrl} alt="journey_slide" loading="lazy"/>
+                  <div>
+                    <h2>{el.title}</h2>
+                  </div>
+                </div>
+              </swiper-slide>
+            </>)}
+            {cursos.map((el,index)=>
+            <>
+              <swiper-slide  key={index}>
+                <div  className='info-slide-meditations height-more'>
+                <span className='bg-slide'></span>
+                  <img src={el.imageUrl} alt="journey_slide" loading="lazy"/>
+                  <div>
+                    <h2>{el.title}</h2>
+                  </div>
+                </div>
+              </swiper-slide>
+            </>)}
+
+          </swiper-container>
+          <div className='boton-account'>
+            <button onClick={() => handlePrev()}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+  <path d="M28 56C43.4397 56 56 43.4397 56 28C56 12.5603 43.4397 -1.09806e-06 28 -2.44784e-06C12.5603 -3.79762e-06 3.79762e-06 12.5603 2.44784e-06 28C1.09806e-06 43.4397 12.5603 56 28 56ZM19.3503 26.3503L31.017 14.6837C31.472 14.2287 32.0693 14 32.6667 14C33.264 14 33.8614 14.2287 34.3164 14.6837C35.2287 15.596 35.2287 17.0707 34.3164 17.983L24.2993 28L34.3163 38.017C35.2286 38.9293 35.2286 40.404 34.3163 41.3163C33.404 42.2286 31.9293 42.2286 31.017 41.3163L19.3503 29.6496C18.438 28.7373 18.438 27.2627 19.3503 26.3503Z" fill="#9C9C9C" fill-opacity="0.67"/>
+</svg>
+            </button>
+              <button onClick={() => handleNext()}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <path d="M28 56C43.4397 56 56 43.4397 56 28C56 12.5603 43.4397 -1.09806e-06 28 -2.44784e-06C12.5603 -3.79762e-06 3.79762e-06 12.5603 2.44784e-06 28C1.09806e-06 43.4397 12.5603 56 28 56ZM19.3503 26.3503L31.017 14.6837C31.472 14.2287 32.0693 14 32.6667 14C33.264 14 33.8614 14.2287 34.3164 14.6837C35.2287 15.596 35.2287 17.0707 34.3164 17.983L24.2993 28L34.3163 38.017C35.2286 38.9293 35.2286 40.404 34.3163 41.3163C33.404 42.2286 31.9293 42.2286 31.017 41.3163L19.3503 29.6496C18.438 28.7373 18.438 27.2627 19.3503 26.3503Z" fill="#9C9C9C" fill-opacity="0.67"/>
+              </svg>
+            </button>
+        </div>
+    </div>
+          </div>
         </div>
       </div>
-      <Footer/>
+      <div className='footer-div'>
+        <Footer/>
+      </div>
     </section>
   )
 }

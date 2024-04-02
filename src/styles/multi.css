@@ -1,0 +1,65 @@
+
+.bookImageSlide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.bookImageSlide img {
+    height: auto;
+    width: 100%;
+    display: block;
+}
+.bookInfo {
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    width: 50%;
+    z-index: -1;
+    position: relative;
+}
+.bookInfo h3 {
+    font-family: 'Alexandria';
+    font-weight: 500;
+    white-space: nowrap;
+    font-size: clamp(24px,3vw,3.4rem);
+}
+
+.authorStars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+}
+.author {
+    font-family: 'Alexandria';
+    color: #A38641;
+    font-size: clamp(24px,3vw,3.4rem);
+    white-space: nowrap;
+}
+.stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+.stars img {
+    width: 1.5rem;
+    height: auto;
+}
+.description {
+    color: #494949;
+    font-family: 'Alexandria';
+    font-weight: 300;
+    font-size:clamp(14px,1.1vw,1.2rem);
+    width: 125%;
+}
+.price {
+    color: #000;
+    font-family: 'Alexandria';
+    font-weight: 500;
+    font-size:clamp(14px,1.1vw,1.2rem);
+}

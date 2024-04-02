@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import Book from '../assets/book.png'
+import Book from '../assets/book.webp'
 
 const Cart = ({clase,handleClose}) => {
 

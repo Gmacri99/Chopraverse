@@ -5,9 +5,14 @@ import Checkout from './components/checkout'
 import { Footer } from './components/footer'
 import Login from './components/login'
 import Navbar from './components/navbar'
+import Navbar2 from './components/navbar2'
 import Cart from './components/cart'
 import Home from './components/home'
 import Meditation from './components/Meditation'
+import Library from './components/library'
+import SingleBook from './components/singleBook'
+import About from './components/about'
+import MeditationSingle from './components/meditationSingle'
 
 function App() {
 
@@ -30,6 +35,7 @@ function App() {
   const [textoRecibido3,setTextoRecibido3]= useState(false)
   const [textoRecibido4,setTextoRecibido4]= useState(false)
   const [datos,setDatos]= useState('')
+  const [activo,setActivo]= useState(true)
   
   const openCart=()=>{
     setClaseRecibida('')
@@ -72,14 +78,17 @@ useEffect(()=>{
   return (
     <>
       
-      <Navbar openCart={openCart} login={login} register={register} register2={register2}  data={datos}/>
+      {activo ? <Navbar2 openCart={openCart} login={login} register={register} register2={register2}  data={datos}/> : <Navbar openCart={openCart} login={login} register={register} register2={register2}  data={datos}/>}
       <Cart clase={claseRecibida} handleClose={handleClose} /> 
       {/*<Login renderizar={textoRecibido} clase={claseRecibida2} datos={setDatos} setTextoRecibido3={setTextoRecibido3}/>*/}
       {/*<Checkout/>*/}
       {/*textoRecibido3 ? <Home clase={textoRecibido3}/> : null*/}
       {/*<Account clase={claseRecibida4}/>*/}
-      <Meditation/>
-    
+      {/*<Meditation/>*/}
+      {/*<Library/>*/}
+      {<SingleBook activo={activo}/>}
+      {/*<About/>*/}
+      {/*<MeditationSingle texto={'The Metahuman Journey'}/>*/}
     </>
   )
 }

@@ -1,0 +1,126 @@
+#library-slider-section swiper-slide,
+#library-slider-section swiper-slide div {
+  transition: transform 0.75s ease-in-out, opacity 0.75s ease-in-out;
+  opacity: 1;
+}
+
+#library-slider-section swiper-slide {
+  transform: scale(0.6);
+}
+#library-slider-section swiper-slide.swiper-slide-active {
+  transform: scale(1);
+}
+
+.multiSliderBooksLibrary {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top:4rem;
+  }
+  
+  .infosSliderWrapper {
+    width: 43.5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .infosSliderWrapper swiper-container {
+    width: 100%;
+  }
+  .infosSliderWrapper swiper-container swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .booksSliderWrapper {
+    width: 56.5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    position: relative;
+  }
+  
+  .booksSliderWrapper swiper-container {
+    width: 100%;
+  }
+  
+  .booksSliderWrapper swiper-container swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: scale(0.6);
+    transition: all .8s ease;
+  }
+
+  .booksSliderWrapper swiper-container swiper-slide.swiper-slide-active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: scale(1);
+  }
+  
+  
+  .booksSliderWrapper button {
+    position: absolute;
+    z-index: 10;
+    top: 80%;
+    left: 50%;
+    display: flex;
+    z-index: 1007;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%,0%);
+  }
+  .booksSliderWrapper button img {
+    width:1.25rem;
+    height: auto;
+    margin-right: 1rem;
+  }
+  .booksSliderWrapper button:nth-of-type(1) {
+    transform: translate(-50%,0%);
+  }
+  .booksSliderWrapper button:nth-of-type(2) {
+    transform: translate(50%,0%);
+  }
+  .booksSliderWrapper button:nth-of-type(2) img {
+    transform: rotate(180deg);
+    width:1.75rem;
+    margin-top: -.1rem;
+  }
+
+  .btn-swiper-multi{
+    background-color: transparent;
+    border: none;
+  }
+
+  @media screen and (max-width:767px) {
+    
+.multiSliderBooksLibrary {
+    position: relative;
+    top:0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 100%;
+    height: fit-content;
+    padding: 8rem 0rem;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    
+  }
+
+  }
