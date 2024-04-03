@@ -102,8 +102,10 @@ const Account = ({clase}) => {
       const elemento = document.querySelector('.div-left-account ul');
       const elemento3 = document.querySelector('.div-left-account');
       const elemento2 = document.querySelector('.right-account');
+      const elemento4 = document.querySelector('.div-noticia');
       console.log(elemento.childNodes)
       console.log(elemento2.childNodes)
+      console.log(elemento4.childNodes[0])
       elemento.childNodes.forEach((element,indice) => {
         element.addEventListener('click',()=>{
           elemento3.classList.add('move-right2')
@@ -112,6 +114,8 @@ const Account = ({clase}) => {
           const elementoNuevo=elemento2.childNodes[0]?.childNodes?.forEach((element,index)=>{
             if(index===indice){
               element.classList.remove('move-left')
+              indice===1 ? elemento4.childNodes[0].classList.remove('move-left') && elemento4.childNodes[1].classList.add('move-left') : null
+              indice===2 ? elemento4.childNodes[0].classList.add('move-left') && elemento4.childNodes[1].classList.remove('move-left') : null
             }else{
               element.classList.add('move-left')
             }

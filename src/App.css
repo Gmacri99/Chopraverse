@@ -193,7 +193,7 @@ display: none;
   display: flex;
   width: 100%;
   justify-content:center;
-  z-index: 1002;
+  z-index: 1008;
   align-items: start;
   flex-direction: column;
   height: 6.5rem;
@@ -1443,6 +1443,165 @@ margin-left: 1rem;
   border-radius: 100px;
   height: 100%;
   background-color:#A58842 ;
+}
+
+textarea {
+  resize: none;
+}
+
+.div-info-review h2{
+  margin-top: .84rem;
+  font-family: Alexandria;
+  font-size: clamp(14px,1.15vw,1.2rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 0px */
+}
+
+.div-info-review h5{
+  font-family: Alexandria;
+  font-size: clamp(11px,.65vw,.7rem);
+  font-style: normal;
+  margin-top: .4rem;
+  font-weight: 300;
+  color: #000 !important;
+  line-height: 100%; /* 0px */
+}
+
+.imagenes-review{
+  display: flex;
+  margin-top: 0rem !important;
+  flex-direction: row !important;
+  justify-content: start !important;
+  gap: 0rem !important;
+}
+
+.div-info-review div{
+  height: fit-content;
+  gap: .5rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.imagenes-review img{
+  width: 35px;
+  height: auto;
+}
+
+.div-info-review h3{
+  margin-top: .4rem;
+  font-family: Alexandria;
+  font-size: clamp(16px,1.45vw,1.6rem);
+  font-style: normal;
+  color: #A38641;
+  font-weight: 500;
+  line-height: 100%; /* 0px */
+}
+
+.div-info-review{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+}
+
+.review{
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.your-review{
+  display: flex;
+  flex-direction: column;
+}
+
+.your-review h6{
+  font-family: Alexandria;
+  font-size: clamp(12px,1.25vw,1.3rem) !important;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 0px */
+  margin-top: 1rem;
+}
+
+.your-review h4{
+  font-family: Alexandria;
+  font-size: clamp(12px,.85vw,.9rem) !important;
+  font-style: normal;
+  color: #A6A6A6;
+  font-weight: 500;
+  line-height: 100%; /* 0px */
+  margin-top: 1rem;
+}
+
+.your-review div{
+  flex-direction: column;
+  gap: .5rem;
+  display: flex;
+}
+
+.your-review textarea{
+  font-family: Alexandria;
+  font-size: clamp(12px,1.05vw,1.1rem) !important;
+  font-style: normal;
+  font-weight: 500;
+  color: #000000;
+  outline: none;
+  line-height: 100%; /* 0px */
+  width: 40%;
+  border: 1.5px solid #A6A6A6;
+  border-radius:10px;
+  background-color: transparent;
+  min-width: 280px;
+  padding-left: 1rem;
+  padding-top: .5rem;
+}
+
+.your-review button{
+  font-family: Typo;
+  border: none;
+  background-color: #000;
+  padding: .65rem .2rem;
+  font-size: clamp(12px,1.05vw,1.1rem) !important;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  gap: .8rem;
+  align-items: center;
+  color: #FFF;
+  line-height: 100%; /* 0px */
+  width: 10%;
+  min-width: 120px;
+}
+
+.your-review label{
+  font-family: Alexandria;
+  font-size: clamp(12px,.75vw,.8rem) !important;
+  font-style: normal;
+  font-weight: 300;
+  color: #A6A6A6;
+  line-height: 100%; /* 0px */
+  margin-top: 1rem;
+}
+
+.review-img{
+  width: 80px;
+  height: auto;
+}
+
+.div-info-review p{
+  font-family: Alexandria;
+  font-size: clamp(12px,1.05vw,1.1rem) !important;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 100%; /* 0px */
+  margin-top: 1rem;
 }
 
 
@@ -4025,6 +4184,7 @@ text-align: left;
 .capitulo2{
   display: flex;
   position: relative;
+  transition: all .5s ease;
   width: 100%;
   flex-direction: column;
   align-items: center;
@@ -4317,6 +4477,7 @@ backdrop-filter: blur(3.758117914199829px);
 width: 95%;
   position: relative;
   height: 320px;
+  transition: all .5s ease;
   overflow-y: scroll;
 }
 
@@ -4477,6 +4638,14 @@ opacity: 1 !important;
 
   .flex-sub ul{
     gap: 2rem;
+  }
+
+  .review-star li img{
+    width: 30px;
+  }
+
+  .your-review textarea{
+    width: 80%;
   }
 
   
@@ -5468,6 +5637,14 @@ width: 25px;
 
   @media screen and (min-width:1024px) and (max-width:1279px) {
 
+    
+  .review-star li img{
+    width: 30px;
+  }
+
+  .your-review textarea{
+    width: 50%;
+  }
 
     .footer-div{
       flex-grow: 1;
@@ -6406,6 +6583,23 @@ padding-bottom: 2rem;
             height: 400px;
           }
 
+
+          .imagenes-review img{
+            width: 20px;
+          }
+
+          .review-img{
+            width: 50px;
+          }
+
+          .review-star li img{
+            width: 30px;
+          }
+        
+          .your-review textarea{
+            width: 50%;
+          }
+
           .vr-press-div input{
             width: 80%;
           }
@@ -7284,6 +7478,22 @@ footer{
             .contenido-hero2{
               gap: 1rem;
               padding-left: 2.5%;
+            }
+
+            .imagenes-review img{
+              width: 20px;
+            }
+
+            .review-img{
+              width: 50px;
+            }
+
+            .review-star li img{
+              width: 30px;
+            }
+          
+            .your-review textarea{
+              width: 80%;
             }
 
             .height-more{

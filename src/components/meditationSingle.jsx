@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import video from '../assets/bgVideo.mp4'
 import audio from '../assets/Group.svg'
 import videofondo from '../assets/Rectangle 75 (1).png'
@@ -13,7 +13,59 @@ import { useWindowSize } from './useWindowSize'
 const MeditationSingle = ({texto,registers}) => {
 
     const {width,height}=useWindowSize()
+    const [verdadero,setVerdadero]=useState(false)
+
+    const handleChange=(e)=> {
+        const A=document.getElementById('1')
+        const B=document.getElementById('2')
+        const C=document.getElementById('3')
+        switch(e){
+            case 1:
+                A.classList.remove('move-left')
+                B.classList.add('move-left')
+                B.style.position='absolute'
+                C.classList.add('move-left')
+                break;
+            case 2:
+                A.classList.add('move-left')
+                B.classList.remove('move-left')
+                B.style.position='relative'
+                C.classList.add('move-left')
+                break;
+            case 3:
+                A.classList.add('move-left')
+                B.classList.add('move-left')
+                B.style.position='absolute'
+                C.classList.remove('move-left')
+                break;
+            default:
+
+                break;
+        }
+    }
     
+    const closeModal=(e)=>{
+        const A=document.getElementById('1')
+        const B=document.getElementById('2')
+        const C=document.getElementById('3')
+        switch(e){
+            case 1:
+                A.classList.add('move-left')
+
+                break;
+            case 2:
+                B.classList.add('move-left')
+ 
+                break;
+            case 3:
+                C.classList.add('move-left')
+                break;
+            default:
+
+                break;
+        }
+    }
+
   return (
     <section className="meditation-section single-2 audio-nogap">
     <video
@@ -28,9 +80,9 @@ const MeditationSingle = ({texto,registers}) => {
         Lorem ipsum dolor sit amet consectetur. Arcu sollicitudin quis nulla proin in. Sed ipsum molestie nulla augue. Porttitor porttitor in non curabitur amet dignissim amet egestas. At sagittis tempus ultrices faucibus elit. Vulputate urna lorem arcu mauris et in elementum.
         </p>
         <ul>
-            <li><img src={audio} alt="audio" /> Audio</li>
-            <li><img src={video3} alt="video3" /> Video</li>
-            <li><img src={vr} alt="vr" style={{marginBottom:'.1rem'}}/>VR</li>
+            <li style={{cursor:'pointer'}}><img onClick={()=>handleChange(3)} src={audio} alt="audio" /> Audio</li>
+            <li style={{cursor:'pointer'}}><img onClick={()=>handleChange(2)} src={video3} alt="video3" /> Video</li>
+            <li style={{cursor:'pointer'}}><img onClick={()=>handleChange(1)} src={vr} alt="vr" style={{marginBottom:'.1rem'}}/>VR</li>
         </ul>
         {registers ?<div className='column-buttons-phone'>
                 <button>Buy now
@@ -45,9 +97,9 @@ const MeditationSingle = ({texto,registers}) => {
         null}
 
     </div>
-    {/*<div style={{opacity:0}} className='vr-press'>
+    {<div id='1' className='vr-press move-left'>
         <div className='vr-press-div'>
-            <button className='vr-button-first'>
+            <button onClick={()=>closeModal(1)} className='vr-button-first'>
             <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M28 0L17.3242 11.0162L28 22H21.5753L21.5114 21.9354L14 14.3113L6.42466 22H0L10.6758 10.9838L0 0H6.42466L6.48858 0.06461L14 7.721L21.5753 0H28Z" fill="white"/>
             </svg>
@@ -59,10 +111,10 @@ const MeditationSingle = ({texto,registers}) => {
             <button>Send</button>
             </div>
         </div>
-  </div>*/}
+  </div>}
    
-   { /* <div className='capitulo'>
-       <button className='capitulo-back'>
+   {   <div id='2' style={{position:'absolute'}} className='capitulo move-left'>
+       <button onClick={()=>closeModal(2)} className='capitulo-back'>
        <svg width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path id="Vector"  d="M3.80474 0.205024C4.06509 0.478395 4.06509 0.921608 3.80474 1.19498L1.60946 3.50001L3.80474 5.80504C4.06509 6.0784 4.06509 6.52164 3.80474 6.79499C3.54438 7.06834 3.12228 7.06834 2.86192 6.79499L0.195251 3.99498C-0.0650837 3.72163 -0.0650836 3.2784 0.195251 3.00503L2.86192 0.205023C3.12228 -0.0683412 3.54438 -0.0683412 3.80474 0.205024Z" fill="white"/>
         </svg>
@@ -209,11 +261,11 @@ const MeditationSingle = ({texto,registers}) => {
         </div>
        </div>
 
-        </div> */}
-        <div className='audios '>
+        </div>}
+        <div id='3' className='audios move-left'>
             <span className='gradiente'></span>
             <div className='capitulo2'>
-                <button className='capitulo-back'>
+                <button onClick={()=>closeModal(3)} className='capitulo-back'>
        <svg width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path id="Vector"  d="M3.80474 0.205024C4.06509 0.478395 4.06509 0.921608 3.80474 1.19498L1.60946 3.50001L3.80474 5.80504C4.06509 6.0784 4.06509 6.52164 3.80474 6.79499C3.54438 7.06834 3.12228 7.06834 2.86192 6.79499L0.195251 3.99498C-0.0650837 3.72163 -0.0650836 3.2784 0.195251 3.00503L2.86192 0.205023C3.12228 -0.0683412 3.54438 -0.0683412 3.80474 0.205024Z" fill="white"/>
         </svg>

@@ -4,9 +4,94 @@ import cart from '../assets/cart.svg'
 import menu2 from '../assets/menu.svg'
 import close from '../assets/closeMenu.svg'
 import { useEffect } from 'react'
+import { Observer } from 'gsap/all'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 const Navbar = ({openCart,login,register,data,register2}) => {
 
 
+    gsap.registerPlugin(Observer);
+
+    gsap.registerPlugin(useGSAP);
+
+    useGSAP(()=>{
+        setTimeout(()=>{
+
+        let animating = false,
+        currentIndex = 0,
+        nextIndex = -1;
+        const maxIndex = 5;
+        const isAnimating = () => animating = true;
+        const notAnimating = () => animating = false;
+    
+        const headerTimeline = gsap.timeline({
+            paused: true,
+            defaults: {
+                duration: 1,
+                // ease: 'sine.in',
+            }
+        })
+        const scrollTimeline = gsap.timeline({
+            paused: true,
+            defaults: {
+                duration: 1,
+                ease: 'power2.inOut',
+            },
+        })
+
+        
+    
+  .to('.navbar', {
+     
+
+        onComplete:notAnimating,
+        onReverseComplete:notAnimating,
+  })
+
+
+
+
+
+
+
+  
+        function scrollListener(index, direction) {
+            if (index > maxIndex || index < 0) return;
+            
+            if (direction == -1) {
+                headerTimeline.play();
+                gsap.to('.navbar ', {
+
+
+                 
+                    background:'#000000bb',
+                    duration: 1,
+                })
+            }
+            else if (direction == 1) {
+                headerTimeline.tweenTo(0);
+                gsap.to('.navbar ', {
+
+   
+                    background:'#000000bb',
+
+                })
+                
+            }
+            isAnimating()
+            scrollTimeline.timeScale(0.75).tweenTo(index);
+            currentIndex = index;
+        }
+  
+        const observer = Observer.create({
+            target: window,
+  
+            onDown: () => !animating && scrollListener(currentIndex - 1, 1),
+            onUp: () => !animating && scrollListener(currentIndex + 1, -1),
+            wheelSpeed: -1
+        })
+    },1000)
+    })
 
 
     useEffect(()=>{

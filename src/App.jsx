@@ -13,6 +13,9 @@ import Library from './components/library'
 import SingleBook from './components/singleBook'
 import About from './components/about'
 import MeditationSingle from './components/meditationSingle'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { Observer } from 'gsap/all'
 
 function App() {
 
@@ -25,6 +28,7 @@ function App() {
     }
   }, [renderCount]);
 
+
   
   const [claseRecibida,setClaseRecibida]= useState('move-left')
   const [claseRecibida2,setClaseRecibida2]= useState('')
@@ -35,7 +39,7 @@ function App() {
   const [textoRecibido3,setTextoRecibido3]= useState(false)
   const [textoRecibido4,setTextoRecibido4]= useState(false)
   const [datos,setDatos]= useState('')
-  const [activo,setActivo]= useState(true)
+  const [activo,setActivo]= useState(false)
   
   const openCart=()=>{
     setClaseRecibida('')
@@ -86,9 +90,9 @@ useEffect(()=>{
       {/*<Account clase={claseRecibida4}/>*/}
       {/*<Meditation/>*/}
       {/*<Library/>*/}
-      {<SingleBook activo={activo}/>}
+      {/*<SingleBook activo={activo}/>*/}
       {/*<About/>*/}
-      {/*<MeditationSingle texto={'The Metahuman Journey'}/>*/}
+      {<MeditationSingle texto={'The Metahuman Journey'}/>}
     </>
   )
 }
