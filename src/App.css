@@ -63,7 +63,7 @@ body{
 .Book-div h2{
 
   font-family: Alexandria;
-font-size:clamp(28px,5.4vw,6.2rem);
+font-size:clamp(36px,5.4vw,6.2rem);
 font-weight: 500;
 line-height: 100%;
 text-align: left;
@@ -83,7 +83,7 @@ text-align: left;
 .Book-img{
   width: auto;
   object-fit: contain;
- 
+  box-shadow: 15px 0px 40px 8px rgba(0, 0, 0, 0.678);
   height: 80vh;
 
 }
@@ -109,7 +109,7 @@ button{
   height: 100vh;
   top: 0%;
   right: 0%;
-  z-index: 1004;
+  z-index: 1008;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -705,11 +705,12 @@ width: 40%;
   align-items: center;
   justify-content: center;
   width: 100%;
-  z-index: 3;
+  z-index: auto;
   min-height: 100vh;
   padding-top: 13.5rem;
   gap: 2rem;
   position: relative;
+  transition: all .4s ease;
 }
 
 .contenido-hero2 {
@@ -810,6 +811,7 @@ font-family: "Alexandria";
 font-size: clamp(32px,5.7vw,6rem);
 font-style: normal;
 font-weight: 400;
+width: 70%;
 line-height: 100%;
 text-transform: uppercase;
 }
@@ -826,10 +828,26 @@ width: 60%;
 
 .contenido-hero2 ul{
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 }
 
-
+.contenido-hero2 button{
+  border-radius: 118.817px;
+background: rgba(229, 226, 226, 0.10);
+color: #FFF;
+font-family: "Typo";
+font-size: clamp(16px,1.05vw,1.1rem);
+justify-content: center;
+align-items: center;
+display: flex;
+gap: .75rem;
+border: none;
+font-style: normal;
+padding: .5rem 1.4rem;
+font-weight: 400;
+line-height: normal;
+backdrop-filter: blur(5.389618873596191px);
+}
 
 .contenido-hero2 ul li{
   display: flex;
@@ -837,7 +855,7 @@ width: 60%;
   gap: .45rem;
   color: #FFF;
 font-family: Alexandria;
-font-size: clamp(14px,1vw,1.14rem);
+font-size: clamp(14px,.85vw,.9rem);
 font-style: normal;
 font-weight: 200;
 line-height: 150%;
@@ -1505,6 +1523,10 @@ textarea {
   flex-direction: column;
   align-items: start;
 
+}
+
+.capitulo2-back{
+  left: 2.5% !important;
 }
 
 .review{
@@ -3085,6 +3107,25 @@ line-height: 130%; /* 22.1px */
   padding-bottom: 3rem;
 }
 
+.first-child-single{
+  height: fit-content;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contenido-hero2 span{
+  color: #FFF;
+  font-family: Alexandria;
+  font-size: clamp(13px, 1.1vw, 1.14rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  width: 60%;
+}
+
 .no-border{
   border: none !important;
 }
@@ -3094,7 +3135,7 @@ line-height: 130%; /* 22.1px */
   opacity: 0;
   
   z-index: 1001;
-  position: absolute;
+  position: absolute !important; 
 }
 
 .desaparece{
@@ -3112,7 +3153,7 @@ line-height: 130%; /* 22.1px */
 
 .p1-singleBook{
   font-family: Alexandria;
-font-size:clamp(16px,1.2vw,1.3rem);
+font-size:clamp(12px,1.2vw,1.3rem);
 font-weight: 300;
 line-height: 22.45px;
 text-align: left;
@@ -3121,7 +3162,7 @@ color: #494949;
 
 .p2-singleBook{
   font-family: Alexandria;
-font-size:clamp(16px,1.2vw,1.3rem);
+font-size:clamp(12px,1.2vw,1.3rem);
 font-weight: 500;
 line-height: 22.45px;
 text-align: left;
@@ -3129,8 +3170,8 @@ color: #000000;
 }
 
 .li-single img{
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 .ul-single{
@@ -3145,6 +3186,7 @@ color: #000000;
   display: flex;
   flex-direction: column;
   width: 95%;
+  align-items: center;
   margin-top: 3rem;
 }
 
@@ -3152,6 +3194,7 @@ color: #000000;
   display: flex;
   justify-content: start;
   gap: 3rem;
+  width: 100%;
   border-bottom: .2px solid #A5884240;
 }
 
@@ -3177,7 +3220,7 @@ transition: all .4s ease;
 .info{
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: 100%;
   margin-top: 3rem;
   gap: 1rem;
   opacity: 0;
@@ -3771,7 +3814,7 @@ font-size: clamp(16px,1.25vw,1.5rem);
 
 .footer{
   border-radius: 15px 15px 0px 0px;
-  background: linear-gradient(70deg, #1C1C1C 40.53%, rgba(36, 36, 36, 0.81) 111.23%);
+  background: linear-gradient(70deg, #1C1C1C 40.53%, rgb(36, 36, 36) 111.23%);
   width: 100%;
   max-height: 60rem;
   height: 65vh;
@@ -4190,15 +4233,12 @@ text-align: left;
   align-items: center;
 }
 
-.capitulo-back{
-  left: 2.5%;
-}
-
 .audios{
   display: flex;
   width: 100%;
 position: relative;
   justify-content: center;
+  transition: all .4s ease;
 }
 
 .botons-audio{
@@ -4217,6 +4257,7 @@ position: relative;
   justify-content: space-between;
   align-items: center;
   width: 95%;
+  margin-bottom: 4rem;
 }
 
 .first-div-audio{
@@ -4370,7 +4411,8 @@ justify-content: center;
 }
 
 .audio-nomt{
-  margin-top: 0rem !important; 
+  margin-top: -2rem !important; 
+  z-index: 1003;
  }
 
 .lista-audios{
@@ -6264,6 +6306,9 @@ padding-bottom: 2rem;
         }
 
         
+
+
+        
         .Book{
           gap: 7rem;
           height: 75vh;
@@ -6284,7 +6329,7 @@ padding-bottom: 2rem;
 
 
         .contenido-hero2 {
-          padding-top: 3rem;
+          padding-top: .5rem;
         }
 
         .testimonials-slider-container div:nth-of-type(1) {
@@ -7480,6 +7525,18 @@ footer{
               padding-left: 2.5%;
             }
 
+            .contenido-hero2 h2{
+              width: 100%;
+            }
+
+            .reproductor{
+              margin-bottom: 0rem;
+            }
+
+            .move-left{
+              position: absolute !important;
+            }
+
             .imagenes-review img{
               width: 20px;
             }
@@ -7610,18 +7667,34 @@ footer{
               margin-top: 0 !important;
             }
   
+            .vr-press{
+              z-index: 1009;
+            }
+
+            .vr-button-first{
+              z-index: 1009;
+            }
   
             .div-notp > *{
               margin-top: -.75rem !important;
             }
   
+            .info-fondo p{
+              width: 80%;
+            }
+
+            .informacion-capitulo{
+              margin-top: 3rem;
+            }
+
 
             .imagenes-videoFondo img:nth-child(1){
-              width: 50%;
+              width: 35%;
             }
 
             .informacion-capitulo{
               position: relative;
+              padding-left: .5rem;
             }
 
             .info-fondo div{
@@ -7631,6 +7704,7 @@ footer{
             .imagenes-videoFondo{
               width: 95%;
               justify-content: center;
+
             }
 
             .informacion-capitulo-div{
@@ -7638,6 +7712,7 @@ footer{
               display: flex;
               flex-direction: column;
               gap: .5rem;
+           
             }
             .capitulo{
               height: fit-content;
@@ -7681,7 +7756,7 @@ footer{
             }
 
             .imagenes-videoFondo img:nth-child(2){
-              transform: translate(-190%,-50%);
+              transform: translate(-250%,-50%);
             }
 
             .capitulo{
@@ -7759,6 +7834,7 @@ footer{
 .Book{
   display: flex;
   justify-content: start;
+  align-items: center;
   gap: 2rem;
   flex-direction: column;
   width: 91%;
@@ -7801,7 +7877,7 @@ footer{
 }
 
 .Book-img{
-  width: 100%;
+  width: 85%;
   height:auto;
 }
 
@@ -7994,8 +8070,13 @@ transition: all .4s ease;
   flex-direction: column;
 }
 
+.opacity-0 li{
+  z-index: -1008 !important;
+  opacity: 0 !important;
+}
+
 .opacity-0{
-  z-index: -1003 !important;
+  z-index: -1008 !important;
   opacity: 0 !important;
 }
 
@@ -8067,10 +8148,14 @@ transition: all .4s ease;
   z-index: 1003;
 }
 
+.cart-content-2{
+  height: 42%;
+}
+
 .section-cart{
   border-radius: 0px;
-  position: absolute;
-  height: 100dvh;
+  position: fixed;
+  min-height: 100vh;
 }
 
 .testimonials-wrapper{

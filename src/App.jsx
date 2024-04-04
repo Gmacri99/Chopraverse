@@ -34,15 +34,23 @@ function App() {
   const [claseRecibida2,setClaseRecibida2]= useState('')
   const [claseRecibida3,setClaseRecibida3]= useState(false)
   const [claseRecibida4,setClaseRecibida4]= useState(false)
+  const [claseRecibida5,setClaseRecibida5]= useState(true)
   const [textoRecibido,setTextoRecibido]= useState('Sign in')
   const [textoRecibido2,setTextoRecibido2]= useState(true)
   const [textoRecibido3,setTextoRecibido3]= useState(false)
   const [textoRecibido4,setTextoRecibido4]= useState(false)
+  const [textoRecibido5,setTextoRecibido5]= useState(false)
   const [datos,setDatos]= useState('')
   const [activo,setActivo]= useState(false)
   
   const openCart=()=>{
     setClaseRecibida('')
+  }
+
+  const openMeditation=()=>{
+    setTextoRecibido5(true)
+
+    console.log('holaa')
   }
   
   const handleClose=() => {
@@ -75,6 +83,14 @@ useEffect(()=>{
 },[textoRecibido2])
 
 useEffect(()=>{
+  console.log('cambio')
+  if(textoRecibido5){
+    setClaseRecibida5(true)
+    setTextoRecibido3(false)
+  } 
+},[textoRecibido5])
+
+useEffect(()=>{
   console.log(textoRecibido4)
   textoRecibido4 ? setClaseRecibida4(true) && setTextoRecibido3(false) : setClaseRecibida4(false) && setTextoRecibido3(true)
 },[textoRecibido4])
@@ -82,17 +98,17 @@ useEffect(()=>{
   return (
     <>
       
-      {activo ? <Navbar2 openCart={openCart} login={login} register={register} register2={register2}  data={datos}/> : <Navbar openCart={openCart} login={login} register={register} register2={register2}  data={datos}/>}
+      {activo ? <Navbar2 openCart={openCart} login={login} register={register} register2={register2} meditation={()=>openMeditation()}  data={datos}/> : <Navbar openCart={openCart} meditation={()=>openMeditation()} login={login} register={register} register2={register2}  data={datos}/>}
       <Cart clase={claseRecibida} handleClose={handleClose} /> 
       {/*<Login renderizar={textoRecibido} clase={claseRecibida2} datos={setDatos} setTextoRecibido3={setTextoRecibido3}/>*/}
       {/*<Checkout/>*/}
-      {/*textoRecibido3 ? <Home clase={textoRecibido3}/> : null*/}
+      { /*<Home clase={textoRecibido3}/>*/ }
       {/*<Account clase={claseRecibida4}/>*/}
-      {/*<Meditation/>*/}
+      {/*<Meditation activo={claseRecibida5}/>*/}
       {/*<Library/>*/}
       {/*<SingleBook activo={activo}/>*/}
       {/*<About/>*/}
-      {<MeditationSingle texto={'The Metahuman Journey'}/>}
+      {/*<MeditationSingle texto={'The Metahuman Journey'}/>*/}
     </>
   )
 }

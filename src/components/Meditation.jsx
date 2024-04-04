@@ -7,13 +7,13 @@ import video3 from '../assets/Vector (3).svg'
 import vr from '../assets/Vector (5).svg'
 import { cursos } from '../db/bd'
 
-const Meditation = () => {
+const Meditation = ({activo}) => {
 
     const [registers,setRegisters]= useState(false)
     const [videoset,setVideoSet]= useState(true)
     const [texto,setTexto]= useState('The metahuman Journey')
     const [clase,setClase]= useState('circle')
-
+    const [claseArecibir,setClaseArecibir]=useState('move-right')
     const [clase2,setClase2]= useState('')
     const [clipPath, setClipPath] = useState('0%');
     const [clipPath2, setClipPath2] = useState('100%');
@@ -86,9 +86,15 @@ const Meditation = () => {
   
       }, [texto]);
   
+      
+useEffect(() => {
+  activo ? setClaseArecibir(claseArecibir==='move-right' ? '' : 'move-right') : null
+  console.log(activo)
+},[activo])
+
 
   return (
-    <section className="meditation-section">
+    <section className={`meditation-section ${claseArecibir}`}>
     <video
       className={`hero-video`} muted autoPlay playsInline loop>
       <source src={video} type="video/mp4" />

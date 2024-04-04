@@ -39,8 +39,8 @@ const SingleBook = ({activo}) => {
           allowTouchMove: true,
           breakpoints: {
             200: {
-              slidesPerView: 2.4,
-              spaceBetween:15,
+              slidesPerView: 2.5,
+              spaceBetween:5,
             },
             480:{
                 slidesPerView: 3,

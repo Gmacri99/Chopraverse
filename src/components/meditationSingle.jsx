@@ -14,16 +14,19 @@ const MeditationSingle = ({texto,registers}) => {
 
     const {width,height}=useWindowSize()
     const [verdadero,setVerdadero]=useState(false)
+    const [activeInput,setActiveInput]=useState(false)
 
     const handleChange=(e)=> {
         const A=document.getElementById('1')
         const B=document.getElementById('2')
         const C=document.getElementById('3')
+        const D=document.getElementById('4')
         switch(e){
             case 1:
                 A.classList.remove('move-left')
                 B.classList.add('move-left')
                 B.style.position='absolute'
+                setActiveInput(true)
                 C.classList.add('move-left')
                 break;
             case 2:
@@ -31,12 +34,15 @@ const MeditationSingle = ({texto,registers}) => {
                 B.classList.remove('move-left')
                 B.style.position='relative'
                 C.classList.add('move-left')
+                setActiveInput(true)
                 break;
             case 3:
                 A.classList.add('move-left')
                 B.classList.add('move-left')
                 B.style.position='absolute'
+                D.classList.add('audio-nomt')
                 C.classList.remove('move-left')
+                setActiveInput(true)
                 break;
             default:
 
@@ -51,14 +57,15 @@ const MeditationSingle = ({texto,registers}) => {
         switch(e){
             case 1:
                 A.classList.add('move-left')
-
+                setActiveInput(false)
                 break;
             case 2:
                 B.classList.add('move-left')
- 
+                setActiveInput(false)
                 break;
             case 3:
                 C.classList.add('move-left')
+                setActiveInput(false)
                 break;
             default:
 
@@ -68,6 +75,7 @@ const MeditationSingle = ({texto,registers}) => {
 
   return (
     <section className="meditation-section single-2 audio-nogap">
+        <div className='first-child-single'>
     <video
       className={`hero-video`} muted autoPlay playsInline loop>
       <source src={video} type="video/mp4" />
@@ -79,12 +87,13 @@ const MeditationSingle = ({texto,registers}) => {
         <p>
         Lorem ipsum dolor sit amet consectetur. Arcu sollicitudin quis nulla proin in. Sed ipsum molestie nulla augue. Porttitor porttitor in non curabitur amet dignissim amet egestas. At sagittis tempus ultrices faucibus elit. Vulputate urna lorem arcu mauris et in elementum.
         </p>
+        {!activeInput ? <> <span>Available on:</span>
         <ul>
             <li style={{cursor:'pointer'}}><img onClick={()=>handleChange(3)} src={audio} alt="audio" /> Audio</li>
             <li style={{cursor:'pointer'}}><img onClick={()=>handleChange(2)} src={video3} alt="video3" /> Video</li>
             <li style={{cursor:'pointer'}}><img onClick={()=>handleChange(1)} src={vr} alt="vr" style={{marginBottom:'.1rem'}}/>VR</li>
         </ul>
-        {registers ?<div className='column-buttons-phone'>
+        {!registers ?<div className='column-buttons-phone'>
                 <button>Buy now
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                 <path d="M9.6705 0.301025C4.76972 0.301025 0.796875 4.27387 0.796875 9.17465C0.796875 14.0754 4.76972 18.0484 9.6705 18.0484C14.5713 18.0484 18.5443 14.0754 18.5443 9.17465C18.5388 4.27615 14.5692 0.30655 9.6705 0.301025ZM9.6705 17.161C5.25977 17.161 1.68419 13.5854 1.68419 9.17465C1.68419 4.76392 5.25977 1.18834 9.6705 1.18834C14.0812 1.18834 17.6568 4.76392 17.6568 9.17465C17.6518 13.5833 14.0791 17.1559 9.6705 17.161Z" fill="white"/>
@@ -94,7 +103,7 @@ const MeditationSingle = ({texto,registers}) => {
                 
             </div>
             :
-        null}
+        null} </>: null}
 
     </div>
     {<div id='1' className='vr-press move-left'>
@@ -265,7 +274,7 @@ const MeditationSingle = ({texto,registers}) => {
         <div id='3' className='audios move-left'>
             <span className='gradiente'></span>
             <div className='capitulo2'>
-                <button onClick={()=>closeModal(3)} className='capitulo-back'>
+                <button onClick={()=>closeModal(3)} className='capitulo-back capitulo2-back'>
        <svg width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path id="Vector"  d="M3.80474 0.205024C4.06509 0.478395 4.06509 0.921608 3.80474 1.19498L1.60946 3.50001L3.80474 5.80504C4.06509 6.0784 4.06509 6.52164 3.80474 6.79499C3.54438 7.06834 3.12228 7.06834 2.86192 6.79499L0.195251 3.99498C-0.0650837 3.72163 -0.0650836 3.2784 0.195251 3.00503L2.86192 0.205023C3.12228 -0.0683412 3.54438 -0.0683412 3.80474 0.205024Z" fill="white"/>
         </svg>
@@ -394,7 +403,8 @@ const MeditationSingle = ({texto,registers}) => {
 
             </div>
         </div>
-    <div  className='footer-div div-notp audio-nomt'>
+        </div>
+    <div id='4'  className='footer-div div-notp '>
         <Footer/>
     </div>
 </section>
