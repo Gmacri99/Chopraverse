@@ -58,32 +58,53 @@ const About = () => {
         const maxIndex = 5;
         const isAnimating = () => animating = true;
         const notAnimating = () => animating = false;
-    
+
+        
+        gsap.fromTo('.prueba', {
+            x: gsap.utils.random(-200, 200,true), // Random horizontal movement
+            y: gsap.utils.random(-200,-200,true),// Random vertical movement
+            rotation:gsap.utils.random(-90,90,true), // Random rotation
+            z:gsap.utils.random(0,5,true), 
+        }, {
+            x: 0, // Random horizontal movement
+            y: 0,// Random vertical movement
+            rotation:0, // Random rotation
+            z:0, 
+            opacity:1,
+            onReverseComplete: notAnimating,
+            onComplete: notAnimating,
+        
+        
+        })
+
         const headerTimeline = gsap.timeline({
             paused: true,
             defaults: {
                 duration: 1,
-                // ease: 'sine.in',
+                delay: 1, // Agrega un retraso de 1 segundo
             }
         })
+        
         const scrollTimeline = gsap.timeline({
             paused: true,
             defaults: {
-                duration: 1,
+                duration: 4,
                 ease: 'power2.inOut',
+              // Agrega un retraso de 2 segundos
             },
         })
-
-        
+      
+      
     
   .to('.prueba', {
+
         x: gsap.utils.random(-1000, 1000,true), // Random horizontal movement
         y: gsap.utils.random(-1000,-1000,true),// Random vertical movement
         rotation:gsap.utils.random(-1000,1000,true), // Random rotation
         z:gsap.utils.random(0,10,true), //
         onReverseComplete: notAnimating,
     onComplete: notAnimating,
-      
+
   })
 
   .from('#span1', {
@@ -104,6 +125,7 @@ const About = () => {
     rotation:0, // Random rotation
     z:0, 
     opacity:1,
+    
     onReverseComplete: notAnimating,
     onComplete: notAnimating,
 
@@ -120,16 +142,19 @@ const About = () => {
     onReverseComplete: notAnimating,
     onComplete: notAnimating,
 
-},"<")
+})
   .to('#parrafo2', {
+
         top:'0vh',
         opacity:1,
         onReverseComplete: notAnimating,
         onComplete: notAnimating,
+      
 
   },"<")
 .to('#parrafo2', {
-    top:'-100vh',
+    top:'60vh',
+
     opacity:0,
     onReverseComplete: notAnimating,
     onComplete: notAnimating,
@@ -175,7 +200,7 @@ const About = () => {
     onComplete: notAnimating,
 }, "<")
 .to('#parrafo3', {
-    top: '45vh',
+    top: '55vh',
     opacity:1,       
      onReverseComplete: notAnimating,
     onComplete: notAnimating,
@@ -220,7 +245,7 @@ const About = () => {
 
 },"<")
 .to('#parrafo3', {
-    top:'-100vh',
+    top:'100vh',
     opacity:0,
     onReverseComplete: notAnimating,
     onComplete: notAnimating,
@@ -275,7 +300,7 @@ const About = () => {
                 gsap.to('.navbar > #hero-section', {
                     yPercent: 0,
                     opacity: 1,
-                    duration: 2,
+                    duration: 1,
                 })
                 
             }

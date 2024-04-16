@@ -1064,7 +1064,7 @@ line-height: normal;
 
 .circulos-about{
   position: absolute;
-  right: 2%;
+  right: 3.5%;
   width: 100%;
   align-items: end;
   justify-content: center;
@@ -3630,6 +3630,7 @@ align-items: center;
 .prueba{
   position:relative; 
   display:flex;
+  opacity: 0;
 }
 
 .text-div{
@@ -3637,24 +3638,26 @@ align-items: center;
  height: fit-content;
  font-family: Alexandria;
  color: white;
- font-size: clamp(36px,5vw,5.5rem);
+ font-size: clamp(36px,4.5vw,5rem);
  line-height: 120% !important;
- font-weight: 200;
+ font-weight: 100;
  text-align: center;
  justify-content: center;
- gap: 1.5rem;
- bottom: -15vh;
+ column-gap: 1.5rem;
+ row-gap: .5rem;
+ bottom: -20vh;
  flex-wrap: wrap;
+
  display: flex;
  position: absolute;
 }
 
 .prueba22{
-  font-size: clamp(36px,5vw,5.5rem) !important;
+  font-size: clamp(36px,4.5vw,5rem) !important;
 }
 
 .prueba33{
-  font-size: clamp(36px,5vw,5.5rem) !important;
+  font-size: clamp(36px,4.5vw,5rem) !important;
 }
 
 
@@ -3662,15 +3665,16 @@ align-items: center;
   width: 80%;
   font-family: Alexandria;
   color: white;
-  font-size: clamp(45px,5vw,5.5rem) !important;
+  font-size: clamp(45px,4.5vw,5rem) !important;
   line-height: 120%;
-  font-weight: 200;
+  font-weight: 100;
   text-align: center;
   justify-content: center;
-  gap: 1.5rem;
+  column-gap: 1.5rem;
+  row-gap: .5rem;
   flex-wrap: wrap;
   display: flex;
-  bottom: 5%;
+  bottom: 3.5%;
 
   position: absolute;
  }
@@ -3684,10 +3688,11 @@ align-items: center;
   font-weight: 200;
   text-align: center;
   justify-content: center;
-  gap: 1.5rem;
+  column-gap: 1.5rem;
+  row-gap: .5rem;
   flex-wrap: wrap;
   display: flex;
-  bottom: 5%;
+  bottom: -15%;
 
   position: absolute;
  }
@@ -3698,13 +3703,14 @@ align-items: center;
   color: white;
   font-size: clamp(36px,5vw,5.5rem);
   line-height: 100% !important;
-  font-weight: 200;
+  font-weight: 100;
   text-align: center;
   justify-content: center;
-  gap: 1.2rem !important;
+  column-gap: 1.2rem !important;
+  row-gap: .5rem;
   flex-wrap: wrap;
   display: flex;
-  bottom: -16%;
+  bottom: -14%;
 
   position: absolute;
  }
@@ -3723,23 +3729,23 @@ align-items: center;
  }
 
  .parrafo-div3{
-  width: 50%;
+  width: 60%;
   font-family: Alexandria;
   color: white;
-  font-size: clamp(16px,1.4vw,1.6rem) !important;
-  line-height: 150% !important;
-  font-weight: 200;
+  font-size: clamp(16px,1.2vw,1.3rem) !important;
+  line-height: 180% !important;
+  font-weight: 100;
   opacity: 0;
-  top: 100vh;
+  top: 105vh;
 
   position: absolute;
  }
  .parrafo-div2{
-  width: 50%;
+  width: 60%;
   font-family: Alexandria;  
   color: white;
-  font-size: clamp(16px,1.4vw,1.6rem) !important;
-  line-height: 150% !important;
+  font-size: clamp(16px,1.2vw,1.4rem) !important;
+  line-height: 180% !important;
   font-weight: 200;
   opacity: 0;
   top: 50vh;
@@ -3748,11 +3754,11 @@ align-items: center;
  }
 
  .parrafo-div4{
-  width: 50%;
+  width: 60%;
   font-family: Alexandria;
   color: white;
   font-size: clamp(16px,1.4vw,1.6rem) !important;
-  line-height: 150% !important;
+  line-height: 180% !important;
   font-weight: 200;
   opacity: 0;
   top: 100vh;
@@ -4210,7 +4216,7 @@ z-index: 1005;
   line-height: 34.12px;
   text-align: left;
   color: white;
-  
+
 }
 
 .info-fondo p{
@@ -4927,22 +4933,22 @@ opacity: 1 !important;
     
   .text-div{
     width: 93%;
-    gap: .5rem !important;
+    gap: 1rem !important;
   }
 
   .text-div2{
     width: 93%;
-    gap: .5rem !important;
+    gap: 1rem !important;
   }
 
   .text-div3{
     width: 93%;
-    gap: .5rem !important;
+    gap: 1rem !important;
   }
 
   .text-div4{
     width: 93%;
-    gap: .5rem !important;
+    gap: 1rem !important;
   }
 
   .parrafo-div3{
@@ -5839,22 +5845,22 @@ padding-bottom: 2rem;
     
   .text-div{
     width: 93%;
-    gap: .5rem !important;
+    gap: 1rem !important;
   }
 
   .text-div2{
     width: 93%;
-    gap: .5rem !important;
+    gap: 1rem !important;
   }
 
   .text-div3{
     width: 93%;
-    gap: .5rem !important;
+    gap: 1rem !important;
   }
 
   .text-div4{
     width: 93%;
-    gap: .5rem !important;
+    gap: 1rem !important;
   }
 
   .parrafo-div3{
@@ -5872,7 +5878,7 @@ padding-bottom: 2rem;
 
   .parrafo-div2{
     height: 600px ;
-    width: 93%;
+    width: 85%;
   }
 
     
@@ -6305,7 +6311,9 @@ padding-bottom: 2rem;
           margin-top: .5rem;
         }
 
-        
+        .text-div{
+          bottom: -24vh;
+        }
 
 
         

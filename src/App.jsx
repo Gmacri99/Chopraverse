@@ -97,7 +97,6 @@ useEffect(()=>{
 
   return (
     <>
-      
       {activo ? <Navbar2 openCart={openCart} login={login} register={register} register2={register2} meditation={()=>openMeditation()}  data={datos}/> : <Navbar openCart={openCart} meditation={()=>openMeditation()} login={login} register={register} register2={register2}  data={datos}/>}
       <Cart clase={claseRecibida} handleClose={handleClose} /> 
       {/*<Login renderizar={textoRecibido} clase={claseRecibida2} datos={setDatos} setTextoRecibido3={setTextoRecibido3}/>*/}
@@ -107,7 +106,7 @@ useEffect(()=>{
       {/*<Meditation activo={claseRecibida5}/>*/}
       {/*<Library/>*/}
       {/*<SingleBook activo={activo}/>*/}
-      {/*<About/>*/}
+      {<About/>}
       {/*<MeditationSingle texto={'The Metahuman Journey'}/>*/}
     </>
   )
