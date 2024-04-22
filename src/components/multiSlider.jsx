@@ -27,6 +27,14 @@ const MultiSlider = () => {
   
     useEffect(() => {
       register();
+
+      const elementsToStyle = document.querySelectorAll('.swiper');
+      console.log(elementsToStyle)
+      
+      for (const element of elementsToStyle) {
+        element.style.overflow = 'visible'; // Example: Change text color to re
+      }
+
       const swiperParams = {
         enabled: true,
         speed: 1500,
@@ -41,7 +49,7 @@ const MultiSlider = () => {
             },
             768: {
                 slidesPerView: 3,
-                spaceBetween: 10,
+                spaceBetween: 5,
               allowTouchMove: false,
             },
         }

@@ -26,7 +26,7 @@
   }
   
   .infosSliderWrapper {
-    width: 43.5%;
+    width: 38.5%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -42,17 +42,26 @@
   }
   
   .booksSliderWrapper {
-    width: 56.5%;
+    width: 67.5%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: -1;
     position: relative;
+    overflow: visible !important;
   }
   
   .booksSliderWrapper swiper-container {
     width: 100%;
+    height: 100%;
+    overflow: visible !important;
+  }
+
+   
+  .swiper{
+
+    overflow: visible !important;
   }
   
   .booksSliderWrapper swiper-container swiper-slide {
@@ -60,7 +69,8 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transform: scale(0.6);
+    transform: scale(0.5);
+    overflow: visible !important;
     transition: all .8s ease;
   }
 
@@ -68,8 +78,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+ 
     cursor: pointer;
-    transform: scale(1);
+    transform: scale(1.13);
   }
   
   
@@ -77,7 +88,7 @@
     position: absolute;
     z-index: 10;
     top: 80%;
-    left: 50%;
+    left: 45%;
     display: flex;
     z-index: 1007;
     align-items: center;
@@ -90,16 +101,18 @@
     margin-right: 1rem;
   }
   .booksSliderWrapper button:nth-of-type(1) {
-    transform: translate(-50%,0%);
+    transform: translate(-150%,0%);
   }
   .booksSliderWrapper button:nth-of-type(2) {
-    transform: translate(50%,0%);
+    transform: translate(-20%,0%);
   }
   .booksSliderWrapper button:nth-of-type(2) img {
     transform: rotate(180deg);
     width:1.75rem;
     margin-top: -.1rem;
   }
+
+
 
   .btn-swiper-multi{
     background-color: transparent;
@@ -111,6 +124,7 @@
 .multiSliderBooksLibrary {
     position: relative;
     top:0%;
+    z-index: 1002;
     left: 50%;
     transform: translate(-50%, 0%);
     width: 100%;
@@ -122,5 +136,19 @@
     justify-content: flex-start;
     
   }
+
+  .booksSliderWrapper swiper-container swiper-slide.swiper-slide-active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+    cursor: pointer;
+    transform: scale(1.01);
+  }
+
+  .description4{
+    width: 100%;
+  }
+  
 
   }

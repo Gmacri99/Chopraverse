@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Book from '../assets/book.webp'
+import { Link } from 'react-router-dom'
 
 const Cart = ({clase,handleClose}) => {
 
@@ -33,38 +34,7 @@ const Cart = ({clase,handleClose}) => {
                             </div>
                         </div>
                     </div>
-                    <div className="product products-in-cart2-2">
-                        <div className='product2 products-in-cart2-1'>
-                            <img src={Book} alt="" />
-                            <div className='info-product'>
-                        <div className='init-product'>
-                          <span className="product-description">Meta human</span>
-                          <span className="product-price">$100</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur. Arcu sollicitudin quis nulla proin in.</p>
-                            </div>
-                            <div className='flecha-cierre'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="white">
-                        <path d="M15.069 0L9.32349 5.95701L15.069 11.8966H11.6114L11.577 11.8616L7.53448 7.73887L3.4576 11.8966H0L5.74547 5.93954L0 0H3.4576L3.49201 0.034938L7.53448 4.17515L11.6114 0H15.069Z" fill="white"/>
-                        </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="product products-in-cart2-2">
-                        <div className='product2 products-in-cart2-1'>
-                            <img src={Book} alt="" />
-                            <div className='info-product'>
-                        <div className='init-product'>
-                          <span className="product-description">Meta human</span>
-                          <span className="product-price">$100</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur. Arcu sollicitudin quis nulla proin in.</p>
-                            </div>
-                            <div className='flecha-cierre'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="white">
-                        <path d="M15.069 0L9.32349 5.95701L15.069 11.8966H11.6114L11.577 11.8616L7.53448 7.73887L3.4576 11.8966H0L5.74547 5.93954L0 0H3.4576L3.49201 0.034938L7.53448 4.17515L11.6114 0H15.069Z" fill="white"/>
-                        </svg>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div className='cart-content-3'>
@@ -73,8 +43,8 @@ const Cart = ({clase,handleClose}) => {
                     <div className='total-2'><h6>Total</h6> <p>$0</p></div>
                     <div className='total-2'><h6>Sub - Total </h6> <p>$300</p></div>
                     <div className='total-2'><h4>Total (Including Tax)</h4> <span>$300</span></div>
-                    <button>View my cart</button>
-                    <button>Checkout</button>
+                    <Link to='/account'>View my cart</Link>
+                    <Link to='/checkout'>Checkout</Link>
                 </div>
             </div>
 

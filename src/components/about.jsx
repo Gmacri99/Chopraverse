@@ -1,11 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import video from '../assets/Video3.mp4'
+import video from '../assets/Chopraverse.mp4'
 import { useGSAP } from '@gsap/react'
 
 import { Observer } from 'gsap/all'
 import { Footer } from './footer';
 import { useWindowSize } from './useWindowSize';
+import { UserContext } from '../App';
 
 
 const About = () => {
@@ -18,6 +19,15 @@ const About = () => {
   })
 
 
+  const {setUser,user,users,setUsers} = useContext(UserContext)
+  
+
+
+    useEffect(()=>{
+      setUser(false)
+
+  },[])
+
   const texto=' MetaHuman adventures unleashing infinite possibilities'
   const caracteres = texto.split('');
   const spanRefs = useRef([]);
@@ -25,32 +35,13 @@ const About = () => {
   const spanRefs3 = useRef([]);
   const spanRefs4 = useRef([]);
 
-/*
-  gsap.utils.toArray("#miTexto2 span").forEach((letter, index) => {
-    gsap.from(letter, {
-        duration: 1,
-        x: 'random(-50, 50)', // Random horizontal movement
-        y: 'random(-50, 50)', // Random vertical movement
-        rotation: 'random(-360, 360)', // Random rotation
-        ease: 'power1.inOut',
-        opacity: 0,
-        stagger: {
-            amount: 0.1, // Stagger the animation by 0.1 seconds per letter
-        },
-        scrollTrigger: {
-            trigger: letter,
-            start: 'top 80%', // Start the animation when the letter is 80% in view
-        }
-    });
-})
-*/
     gsap.registerPlugin(useGSAP);
     
     const {width,height}=useWindowSize()
     
 
-    useGSAP(()=>{
-        setTimeout(()=>{
+    useGSAP(()=>{ 
+         const timer =setTimeout(()=>{
 
         let animating = false,
         currentIndex = 0,
@@ -81,20 +72,24 @@ const About = () => {
             paused: true,
             defaults: {
                 duration: 1,
-                delay: 1, // Agrega un retraso de 1 segundo
             }
         })
+
+        
+        let startTime = 0;
+        const delayBetweenAnimations = 0.2; // 0.2 segundos entre animaciones
+      
         
         const scrollTimeline = gsap.timeline({
             paused: true,
             defaults: {
-                duration: 4,
+                duration: 1,
                 ease: 'power2.inOut',
               // Agrega un retraso de 2 segundos
             },
         })
       
-      
+
     
   .to('.prueba', {
 
@@ -136,22 +131,21 @@ const About = () => {
     onReverseComplete: notAnimating,
     onComplete: notAnimating,
 
-},"<")
+},"0")
 .to('#span2', {
     backgroundColor:'white',
     onReverseComplete: notAnimating,
     onComplete: notAnimating,
 
-})
+},"0.5")
   .to('#parrafo2', {
-
         top:'0vh',
         opacity:1,
         onReverseComplete: notAnimating,
         onComplete: notAnimating,
       
 
-  },"<")
+  },1)
 .to('#parrafo2', {
     top:'60vh',
 
@@ -200,7 +194,7 @@ const About = () => {
     onComplete: notAnimating,
 }, "<")
 .to('#parrafo3', {
-    top: '55vh',
+    top: '51.5vh',
     opacity:1,       
      onReverseComplete: notAnimating,
     onComplete: notAnimating,
@@ -252,7 +246,7 @@ const About = () => {
 
 },"<")
 .to('#parrafo4', {
-    top: width > 767 ? '55vh' : '48vh',
+    top: width > 767 ? '51.5vh' : '48vh',
     opacity:1,
     onReverseComplete: notAnimating,
     onComplete: notAnimating,
@@ -276,8 +270,12 @@ const About = () => {
     opacity:0,
     onReverseComplete: notAnimating,
 },"<")
-.from('footer', {
+.fromTo('footer', {
     top:'100vh',
+    height:'100vh',
+},{
+    top:'0vh',
+    height:'90vh',
     onReverseComplete: notAnimating,
 },"<")
 
@@ -292,7 +290,6 @@ const About = () => {
                 gsap.to('.navbar > #hero-section', {
                     yPercent: -100,
                     opacity: 0,
-                    duration: 1,
                 })
             }
             else if (direction == 1) {
@@ -300,7 +297,6 @@ const About = () => {
                 gsap.to('.navbar > #hero-section', {
                     yPercent: 0,
                     opacity: 1,
-                    duration: 1,
                 })
                 
             }
@@ -312,12 +308,15 @@ const About = () => {
         const observer = Observer.create({
             target: window,
             type: 'wheel, touch, scroll',
-            preventDefault: true,
+            preventDefault:  false,
             onDown: () => !animating && scrollListener(currentIndex - 1, 1),
             onUp: () => !animating && scrollListener(currentIndex + 1, -1),
             wheelSpeed: -1
         })
+
+
     },1000)
+
     })
 
     useEffect(()=>{
@@ -388,6 +387,7 @@ const About = () => {
   return <>
   <main>
         <section id="miTexto" style={{height:'100vh',overflow:'hidden'}}>
+            <span className='bg-overlay'></span>
   <video
                   className="hero-video" muted autoPlay playsInline loop>
                   <source src={video} type="video/mp4" />

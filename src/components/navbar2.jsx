@@ -3,12 +3,15 @@ import logo from '../assets/logow 1.png'
 import cart from '../assets/Group 7.png'
 import menu2 from '../assets/Group 8.svg'
 import close from '../assets/closeMenu.svg'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { Observer } from 'gsap/all'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { Link } from 'react-router-dom'
+import { UserContext } from '../App'
 const Navbar2 = ({openCart,login,register,data,register2,meditation}) => {
 
+    
     gsap.registerPlugin(Observer);
 
     gsap.registerPlugin(useGSAP);
@@ -59,19 +62,20 @@ const Navbar2 = ({openCart,login,register,data,register2,meditation}) => {
             
             if (direction == -1) {
                 headerTimeline.play();
-                gsap.to('.navbar', {
-                    yPercent: -100,
-                    opacity: 0,
- 
+                gsap.to('.navbar ', {
+
+
+                 
+                    background: 'rgba(156, 156, 156, 0.70)',
                     duration: 1,
                 })
             }
             else if (direction == 1) {
                 headerTimeline.tweenTo(0);
                 gsap.to('.navbar ', {
-                    yPercent: 0,
-                    opacity: 1,
-                    background:'#000000bb',
+
+   
+                    background:'rgba(156, 156, 156, 0.40)',
 
                 })
                 
@@ -92,6 +96,7 @@ const Navbar2 = ({openCart,login,register,data,register2,meditation}) => {
     })
 
 
+    const {setUser} = useContext(UserContext)
 
     useEffect(()=>{
         console.log(data)
@@ -106,10 +111,6 @@ const Navbar2 = ({openCart,login,register,data,register2,meditation}) => {
         menu.classList.remove('opacity-0')
     }
 
-    const openDesplegable2 = ()=>{
-
-      }
-
     const closeDesplegable = ()=>{
         const abrir = document.getElementById('abrir')
         const cerrar = document.getElementById('cerrar')
@@ -119,25 +120,32 @@ const Navbar2 = ({openCart,login,register,data,register2,meditation}) => {
         menu.classList.add('opacity-0')
     }
 
+
+    useEffect(()=>{
+        console.log(data)
+    },[data])
+    
+
+
   return (
-    <section className='navbar'>
+    <nav className='navbar'>
         <div className='navbar-divs'>
-            <div className='logo-header'><img src={logo} alt="Logo-chopraverse" /></div>
+            <Link to='/' className='logo-header'><img src={logo} alt="Logo-chopraverse" /></Link>
             <div className='navbar-div'>
         
             <div className='first-buttons'>
                 <div className='grey'>
-                    <button>Library</button>
-                    <button onClick={()=>meditation()}>Meditation Journey</button>
-                    <button>About us</button>
+                <Link onClick={()=>setUser(false)} className='first-buttons-button' to="/library" >Library</Link>                    
+                    <Link onClick={()=>setUser(false)} className='first-buttons-button' to="/meditation" >Meditation</Link>
+                    <Link onClick={()=>setUser(false)} className='first-buttons-button' to="/about">About</Link>
                 </div>
             </div>
             
             <div className='last-buttons'>
                 <div  className={`${data?.length === 0 ? '' : 'move-left'} last-buttons-div grey`  }>
-                    <button  onClick={login}>Login</button>
+                <Link onClick={()=>setUser(false)} to='/login' className='last-buttons-button' >Login</Link>  
                     <p>/</p>
-                    <button onClick={register}>Sign up</button> 
+                    <Link onClick={()=>setUser(false)} to='/login' className='last-buttons-button' >Sign up</Link>   
                 </div>
                 <div className={`${data?.length !== 0 ? 'opac-1' : ''} last-buttons-div grey opac` }> 
                     <button onClick={register2} >Hi, {data}!</button>
@@ -153,8 +161,8 @@ const Navbar2 = ({openCart,login,register,data,register2,meditation}) => {
             </div>
             </div>
         <div id='menu' className='menu-desplegable opacity-0'>
-            <ul>
-                <li>Library 
+        <ul>
+                <Link to="/library">Library 
                     <svg className='svg-opaco2' width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path  d="M0.40673 13.1425C-0.135577 12.6137 -0.135577 11.7565 0.40673 11.2277L4.97952 6.76927L0.40673 2.31081C-0.135577 1.78209 -0.135577 0.924768 0.406729 0.396047C0.94905 -0.132674 1.82831 -0.132674 2.37063 0.396047L7.92533 5.81188C8.46761 6.3406 8.46761 7.1979 7.92533 7.72667L2.37063 13.1425C1.82831 13.6712 0.949051 13.6712 0.40673 13.1425Z" fill="#7C7B7B"/>
                     </svg>
@@ -162,35 +170,35 @@ const Navbar2 = ({openCart,login,register,data,register2,meditation}) => {
                     <path  d="M0.40673 13.1425C-0.135577 12.6137 -0.135577 11.7565 0.40673 11.2277L4.97952 6.76927L0.40673 2.31081C-0.135577 1.78209 -0.135577 0.924768 0.406729 0.396047C0.94905 -0.132674 1.82831 -0.132674 2.37063 0.396047L7.92533 5.81188C8.46761 6.3406 8.46761 7.1979 7.92533 7.72667L2.37063 13.1425C1.82831 13.6712 0.949051 13.6712 0.40673 13.1425Z" fill="white"/>
                     </svg>
 
-                    </li>
-                <li onClick={()=>meditation()}>Meditation Journey
+                    </Link>
+                <Link to="/meditation" >Meditation Journey
                 <svg className='svg-opaco2' width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path  d="M0.40673 13.1425C-0.135577 12.6137 -0.135577 11.7565 0.40673 11.2277L4.97952 6.76927L0.40673 2.31081C-0.135577 1.78209 -0.135577 0.924768 0.406729 0.396047C0.94905 -0.132674 1.82831 -0.132674 2.37063 0.396047L7.92533 5.81188C8.46761 6.3406 8.46761 7.1979 7.92533 7.72667L2.37063 13.1425C1.82831 13.6712 0.949051 13.6712 0.40673 13.1425Z" fill="#7C7B7B"/>
                     </svg>
                     <svg className='svg-opaco' width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path  d="M0.40673 13.1425C-0.135577 12.6137 -0.135577 11.7565 0.40673 11.2277L4.97952 6.76927L0.40673 2.31081C-0.135577 1.78209 -0.135577 0.924768 0.406729 0.396047C0.94905 -0.132674 1.82831 -0.132674 2.37063 0.396047L7.92533 5.81188C8.46761 6.3406 8.46761 7.1979 7.92533 7.72667L2.37063 13.1425C1.82831 13.6712 0.949051 13.6712 0.40673 13.1425Z" fill="white"/>
                     </svg>
-                </li>
-                <li>About us
+                </Link>
+                <Link to="/about">About us
                 <svg className='svg-opaco2' width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path  d="M0.40673 13.1425C-0.135577 12.6137 -0.135577 11.7565 0.40673 11.2277L4.97952 6.76927L0.40673 2.31081C-0.135577 1.78209 -0.135577 0.924768 0.406729 0.396047C0.94905 -0.132674 1.82831 -0.132674 2.37063 0.396047L7.92533 5.81188C8.46761 6.3406 8.46761 7.1979 7.92533 7.72667L2.37063 13.1425C1.82831 13.6712 0.949051 13.6712 0.40673 13.1425Z" fill="#7C7B7B"/>
                     </svg>
                     <svg className='svg-opaco' width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path  d="M0.40673 13.1425C-0.135577 12.6137 -0.135577 11.7565 0.40673 11.2277L4.97952 6.76927L0.40673 2.31081C-0.135577 1.78209 -0.135577 0.924768 0.406729 0.396047C0.94905 -0.132674 1.82831 -0.132674 2.37063 0.396047L7.92533 5.81188C8.46761 6.3406 8.46761 7.1979 7.92533 7.72667L2.37063 13.1425C1.82831 13.6712 0.949051 13.6712 0.40673 13.1425Z" fill="white"/>
                     </svg>
-                </li>
-                <li>Login 
+                </Link>
+                <Link to="/login">Login 
                 <svg className='svg-opaco2' width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path  d="M0.40673 13.1425C-0.135577 12.6137 -0.135577 11.7565 0.40673 11.2277L4.97952 6.76927L0.40673 2.31081C-0.135577 1.78209 -0.135577 0.924768 0.406729 0.396047C0.94905 -0.132674 1.82831 -0.132674 2.37063 0.396047L7.92533 5.81188C8.46761 6.3406 8.46761 7.1979 7.92533 7.72667L2.37063 13.1425C1.82831 13.6712 0.949051 13.6712 0.40673 13.1425Z" fill="#7C7B7B"/>
                     </svg>
                     <svg className='svg-opaco' width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path  d="M0.40673 13.1425C-0.135577 12.6137 -0.135577 11.7565 0.40673 11.2277L4.97952 6.76927L0.40673 2.31081C-0.135577 1.78209 -0.135577 0.924768 0.406729 0.396047C0.94905 -0.132674 1.82831 -0.132674 2.37063 0.396047L7.92533 5.81188C8.46761 6.3406 8.46761 7.1979 7.92533 7.72667L2.37063 13.1425C1.82831 13.6712 0.949051 13.6712 0.40673 13.1425Z" fill="white"/>
                     </svg>
-                </li>
+                </Link>
             </ul>
         </div>
         </div>
-    </section>
+    </nav>
   )
 }
 

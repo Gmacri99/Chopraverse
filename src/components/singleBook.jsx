@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import books from '../assets/book.webp'
 import star from '../assets/star.svg'
 import a1 from '../assets/1 (1).svg'
@@ -12,6 +12,7 @@ import { Footer } from './footer'
 
 import { useWindowSize } from './useWindowSize'
 import { register } from 'swiper/element'
+import { UserContext } from '../App'
 const SingleBook = ({activo}) => {
 
     const {width}=useWindowSize()
@@ -24,6 +25,11 @@ const SingleBook = ({activo}) => {
     }
 
     const swiperRef = useRef(null);
+    const {setUser} = useContext(UserContext)
+
+    useEffect(()=>{
+        setUser(true)
+    },[])
 
     useEffect(() => {
         

@@ -1,19 +1,19 @@
 import video from '../assets/bgVideo.mp4'
 import pause from '../assets/pause.svg'
-import bg1 from '../assets/bg/fondo1.png'
-import testimonio1 from '../assets/Rectangle 13.png'
-import testimonio2 from '../assets/Rectangle 14.png'
-import testimonio3 from '../assets/Rectangle 15.png'
-import testimonio4 from '../assets/Rectangle 20.png'
-import testimonio5 from '../assets/Rectangle 21.png'
-import bg4 from '../assets/bg/bg4.jpeg'
+import bg1 from '../assets/bg/fondo1.jpg'
+import testimonio1 from '../assets/Rectangle 13.webp'
+import testimonio2 from '../assets/Rectangle 14.webp'
+import testimonio3 from '../assets/Rectangle 15.webp'
+import testimonio4 from '../assets/Rectangle 20.webp'
+import testimonio5 from '../assets/Rectangle 21.webp'
+import bg4 from '../assets/bg/bg4.jpg'
 import logo from '../assets/logo.svg'
 import quote from '../assets/quote.svg'
 import arrow from '../assets/black_arrow.svg'
 import gsap from 'gsap'
 import { register } from 'swiper/element/bundle';
 import { SliderBook } from './SliderBook'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import  '../styles/swiperStyle.css'
 
 import { useGSAP } from '@gsap/react'
@@ -22,12 +22,21 @@ import { Observer } from 'gsap/all'
 import { cursos } from '../db/bd'
 import { useWindowSize } from './useWindowSize'
 import { Footer } from './footer'
+import { Link } from 'react-router-dom'
+import { UserContext } from '../App'
 
 const Home = ({clase}) => {
 
     const [claseArecibir,setClaseArecibir]=useState('move-right')
     const {width,height}=useWindowSize()
   
+    const {setUser} = useContext(UserContext)
+
+    useEffect(()=>{
+      setUser(false)
+  },[])
+
+
     gsap.registerPlugin(Observer);
     gsap.set('section', {
     position: 'absolute',
@@ -82,10 +91,15 @@ const Home = ({clase}) => {
         .from('.welcome-before > p', {
             y: '50vh',
         }, "<")
-        .from('.welcome-wrapper', {
-            y: '150vh',
-            onComplete: notAnimating,
-        }, "<")
+        .fromTo('.meditation-wrapper', {
+          clipPath: 'circle(7%)',
+          y:'150vh'
+      }, {
+        clipPath: 'circle(7%)',
+        y:'0',
+          onReverseComplete: notAnimating,
+          onComplete: notAnimating,
+      }, "<")
         .to('.navbar', {
           backgroundColor:'#000000BB',
           onReverseComplete: notAnimating,
@@ -115,19 +129,14 @@ const Home = ({clase}) => {
              xPercent: -100,
             clipPath: 'circle(50%)',
             onReverseComplete: notAnimating,
-            duration: 0.75,
         })
         .to('.navbar', {
           backgroundColor:'#000000BB',
           onReverseComplete: notAnimating,
       },"<")
-        .to('.welcome-wrapper', {
-            xPercent: -100,
-            duration: 0.75,
-        }, '<0.25')
-        .from('#book-slider-section', {
+
+      .from('#book-slider-section', {
             xPercent: 200,
-            duration: 0.75,
             onComplete: notAnimating,
         }, "<")
         // INDEX: 4
@@ -297,7 +306,7 @@ const Home = ({clase}) => {
     const journeyButtons = gsap.utils.toArray('.journey-button');
     
     gsap.set(journeyButtons[0], {
-        scale: 1.2
+        scale: 1
     })
     let buttonsChange = gsap.timeline({
         paused: true,
@@ -328,6 +337,14 @@ const Home = ({clase}) => {
             }
         })
     })
+
+    function setViewportProperty(){
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    window.addEventListener('resize', setViewportProperty);
+    setViewportProperty();
     
     const testimonialsSwiper = document.querySelector('.testimonials-slider');
 const testimonialsSlideContainer = document.querySelector('.testimonials-slider-container');
@@ -356,7 +373,7 @@ const testimonialsSwiperParams = {
       initialSlide: 4,
     },
     1280: {
-      spaceBetween: 20,
+      spaceBetween: 15,
       slidesPerView: 5,
       initialSlide: 5,
     },
@@ -428,7 +445,7 @@ useEffect(() => {
 
   return (
     <>
-        <main className={`home ${claseArecibir}`}>
+        <main className={`home`}>
             <section id="hero-section">
                 <video
                   className="hero-video" muted autoPlay playsInline loop>
@@ -442,19 +459,19 @@ useEffect(() => {
                       pioneer in integrative medicine and personal transformation
                     </p>
                     <div className="div-home-buttons">
-                        <div className='column-buttons-phone'>
-                            <button>Buy book
+                        <div className='column-buttons-phone no-nmt'>
+                            <Link to='/library'>Buy book
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                             <path d="M9.6705 0.301025C4.76972 0.301025 0.796875 4.27387 0.796875 9.17465C0.796875 14.0754 4.76972 18.0484 9.6705 18.0484C14.5713 18.0484 18.5443 14.0754 18.5443 9.17465C18.5388 4.27615 14.5692 0.30655 9.6705 0.301025ZM9.6705 17.161C5.25977 17.161 1.68419 13.5854 1.68419 9.17465C1.68419 4.76392 5.25977 1.18834 9.6705 1.18834C14.0812 1.18834 17.6568 4.76392 17.6568 9.17465C17.6518 13.5833 14.0791 17.1559 9.6705 17.161Z" fill="white"/>
                             <path d="M8.63149 5.73491C8.44692 5.57357 8.16663 5.59242 8.00529 5.77683C7.84411 5.96141 7.86296 6.2417 8.04737 6.40304L11.2151 9.17466L8.04721 11.9464C7.86263 12.1078 7.84394 12.3881 8.00513 12.5725C8.16647 12.7571 8.44675 12.7759 8.63133 12.6146L12.1808 9.50872C12.2771 9.42455 12.3323 9.30269 12.3323 9.17466C12.3323 9.04662 12.2771 8.92492 12.1808 8.84059L8.63149 5.73491Z" fill="white"/>
                         </svg>
-                            </button>
-                            <button>Buy Meditation Package
+                            </Link>
+                            <Link to='/meditation'>Buy Meditation Package
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                             <path d="M9.6705 0.301025C4.76972 0.301025 0.796875 4.27387 0.796875 9.17465C0.796875 14.0754 4.76972 18.0484 9.6705 18.0484C14.5713 18.0484 18.5443 14.0754 18.5443 9.17465C18.5388 4.27615 14.5692 0.30655 9.6705 0.301025ZM9.6705 17.161C5.25977 17.161 1.68419 13.5854 1.68419 9.17465C1.68419 4.76392 5.25977 1.18834 9.6705 1.18834C14.0812 1.18834 17.6568 4.76392 17.6568 9.17465C17.6518 13.5833 14.0791 17.1559 9.6705 17.161Z" fill="white"/>
                             <path d="M8.63149 5.73491C8.44692 5.57357 8.16663 5.59242 8.00529 5.77683C7.84411 5.96141 7.86296 6.2417 8.04737 6.40304L11.2151 9.17466L8.04721 11.9464C7.86263 12.1078 7.84394 12.3881 8.00513 12.5725C8.16647 12.7571 8.44675 12.7759 8.63133 12.6146L12.1808 9.50872C12.2771 9.42455 12.3323 9.30269 12.3323 9.17466C12.3323 9.04662 12.2771 8.92492 12.1808 8.84059L8.63149 5.73491Z" fill="white"/>
                         </svg>
-                            </button>
+                            </Link>
                         </div>
                         <div >
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -496,13 +513,13 @@ useEffect(() => {
                         peace, learning, and self- discovery in the digital age,
                         guiding users toward inner peace and enlightenment.
                       </p>
-                      <button>
+                      <Link to='/about'>
                         About us
                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                             <path d="M9.6705 0.301025C4.76972 0.301025 0.796875 4.27387 0.796875 9.17465C0.796875 14.0754 4.76972 18.0484 9.6705 18.0484C14.5713 18.0484 18.5443 14.0754 18.5443 9.17465C18.5388 4.27615 14.5692 0.30655 9.6705 0.301025ZM9.6705 17.161C5.25977 17.161 1.68419 13.5854 1.68419 9.17465C1.68419 4.76392 5.25977 1.18834 9.6705 1.18834C14.0812 1.18834 17.6568 4.76392 17.6568 9.17465C17.6518 13.5833 14.0791 17.1559 9.6705 17.161Z" fill="white"/>
                             <path d="M8.63149 5.73491C8.44692 5.57357 8.16663 5.59242 8.00529 5.77683C7.84411 5.96141 7.86296 6.2417 8.04737 6.40304L11.2151 9.17466L8.04721 11.9464C7.86263 12.1078 7.84394 12.3881 8.00513 12.5725C8.16647 12.7571 8.44675 12.7759 8.63133 12.6146L12.1808 9.50872C12.2771 9.42455 12.3323 9.30269 12.3323 9.17466C12.3323 9.04662 12.2771 8.92492 12.1808 8.84059L8.63149 5.73491Z" fill="white"/>
                         </svg>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -537,12 +554,12 @@ useEffect(() => {
                   <div>
                     <h2>{el.title}</h2>
                     <p>{el.description}</p>
-                    <button>View more
+                    <Link to='/meditationSingle'>View more
                       <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                           <path d="M9.6705 0.301025C4.76972 0.301025 0.796875 4.27387 0.796875 9.17465C0.796875 14.0754 4.76972 18.0484 9.6705 18.0484C14.5713 18.0484 18.5443 14.0754 18.5443 9.17465C18.5388 4.27615 14.5692 0.30655 9.6705 0.301025ZM9.6705 17.161C5.25977 17.161 1.68419 13.5854 1.68419 9.17465C1.68419 4.76392 5.25977 1.18834 9.6705 1.18834C14.0812 1.18834 17.6568 4.76392 17.6568 9.17465C17.6518 13.5833 14.0791 17.1559 9.6705 17.161Z" fill="white"/>
                           <path d="M8.63149 5.73491C8.44692 5.57357 8.16663 5.59242 8.00529 5.77683C7.84411 5.96141 7.86296 6.2417 8.04737 6.40304L11.2151 9.17466L8.04721 11.9464C7.86263 12.1078 7.84394 12.3881 8.00513 12.5725C8.16647 12.7571 8.44675 12.7759 8.63133 12.6146L12.1808 9.50872C12.2771 9.42455 12.3323 9.30269 12.3323 9.17466C12.3323 9.04662 12.2771 8.92492 12.1808 8.84059L8.63149 5.73491Z" fill="white"/>
                       </svg>
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </swiper-slide>
@@ -632,8 +649,9 @@ useEffect(() => {
       </div>
     </section>
 
-
-        <Footer />
+        <div className='abs-foo'>
+          <Footer />
+        </div>
         </main>
     </>
   )

@@ -1,6 +1,6 @@
 import avatar from '../assets/Avatar.svg'
 import logout from '../assets/logout.svg'
-import bookFace from '../assets/Rectangle8.png'
+import bookFace from '../assets/Rectangle8.webp'
 import background from '../assets/Rectangle75.png'
 import Book from '../assets/book.webp'
 import wireless from '../assets/wireless.svg'
@@ -103,6 +103,8 @@ const Account = ({clase}) => {
       const elemento3 = document.querySelector('.div-left-account');
       const elemento2 = document.querySelector('.right-account');
       const elemento4 = document.querySelector('.div-noticia');
+      const elemento5 = document.querySelector('#libros-cursor');
+      const elemento6 = document.querySelector('#libros');
       console.log(elemento.childNodes)
       console.log(elemento2.childNodes)
       console.log(elemento4.childNodes[0])
@@ -111,11 +113,18 @@ const Account = ({clase}) => {
           elemento3.classList.add('move-right2')
           elemento2.classList.remove('move-left2')
           console.log(indice)
+          
           const elementoNuevo=elemento2.childNodes[0]?.childNodes?.forEach((element,index)=>{
             if(index===indice){
+              console.log(index)
               element.classList.remove('move-left')
-              indice===1 ? elemento4.childNodes[0].classList.remove('move-left') && elemento4.childNodes[1].classList.add('move-left') : null
-              indice===2 ? elemento4.childNodes[0].classList.add('move-left') && elemento4.childNodes[1].classList.remove('move-left') : null
+              console.log(elemento4.childNodes[0])
+              if(indice===1) { 
+                elemento5.classList.add('move-left')
+              elemento6.classList.remove('move-left') } else if(indice===2){
+               elemento6.classList.add('move-left') 
+               elemento5.classList.remove('move-left') 
+              }
             }else{
               element.classList.add('move-left')
             }
@@ -140,12 +149,14 @@ const Account = ({clase}) => {
     },[])
 
     useEffect(()=>{
-      let touchstartX = 0;
-let touchendX = 0;
+
 
 const element = document.querySelector('.account'); // Reemplaza '#elemento' con el selector de tu elemento
 const element2 = document.querySelector('.div-left-account'); // Reemplaza '#elemento' con el selector de tu elemento
 const element3 = document.querySelector('.right-account'); // Reemplaza '#elemento' con el selector de tu elemento
+
+let touchstartX = 0;
+let touchendX = 0;
 
 element.addEventListener('touchstart', function(event) {
     touchstartX = event.changedTouches[0].screenX;
@@ -157,12 +168,19 @@ element.addEventListener('touchend', function(event) {
 }, false);
 
 function handleSwipe() {
-    if (touchendX > touchstartX) {
-      element2.classList.remove('move-right2'); // Reemplaza 'clase' con el nombre de tu clase
-      element3.classList.add('move-left2'); // Reemplaza 'clase' con el nombre de tu clase
+    const distance = Math.abs(touchendX - touchstartX); // Calcula la distancia absoluta del deslizamiento
+    if (distance > 60) { // Verifica si el deslizamiento es mayor a 60px
+        if (touchendX > touchstartX) {
+            element2.classList.remove('move-right2');
+            element3.classList.add('move-left2');
+        } else {
+            element2.classList.add('move-right2');
+            element3.classList.remove('move-left2');
+        }
     }
-    console.log('no')
+    console.log('no');
 }
+
     },[])
 
     useEffect(()=>{
@@ -171,7 +189,7 @@ function handleSwipe() {
     },[clase])
 
   return (
-    <section className={`account ${clase2}`} >
+    <section id='account' className={`account ${clase2}`} >
       <div className="contenido-account">
         <div className="divs-account">
           <div className="div-left-account ">
@@ -548,7 +566,7 @@ function handleSwipe() {
          
         </div>
         <div className='div-noticia'>
-          <div className='libro-nuevo move-left'>
+          <div id='libros' className='libro-nuevo move-left'>
             <h3>Upcoming Book</h3>
             <div className='libro-nuevo-div'>
               <img src={yellow} alt="book-yellow" />
@@ -558,7 +576,7 @@ function handleSwipe() {
               </div>
             </div>
           </div>
-          <div className='libro-nuevo '>
+          <div id='libros-cursor' className='libro-nuevo'>
             <h3>Coming soon</h3>
             <div className='div-slider-meditations slider-soon'>
     <swiper-container  ref={swiperRef}  init="false">

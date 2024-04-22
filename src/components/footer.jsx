@@ -1,7 +1,13 @@
+import { useEffect } from 'react'
 import '../App.css'
 import logo from '../assets/logo.svg'
 
 export const Footer= ()=>{
+
+useEffect(()=>{
+    
+},[])
+
     return (
     <>
     <footer className="footer">

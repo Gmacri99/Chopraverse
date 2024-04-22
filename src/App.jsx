@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { createContext,useContext, useEffect, useState } from 'react'
 import './App.css'
 import Account from './components/account'
 import Checkout from './components/checkout'
@@ -16,6 +16,13 @@ import MeditationSingle from './components/meditationSingle'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { Observer } from 'gsap/all'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+
+
+
+export const UserContext = createContext();
+
 
 function App() {
 
@@ -29,6 +36,8 @@ function App() {
   }, [renderCount]);
 
 
+  const [user, setUser] = useState(null);
+  const [users, setUsers] = useState(true);
   
   const [claseRecibida,setClaseRecibida]= useState('move-left')
   const [claseRecibida2,setClaseRecibida2]= useState('')
@@ -97,17 +106,30 @@ useEffect(()=>{
 
   return (
     <>
-      {activo ? <Navbar2 openCart={openCart} login={login} register={register} register2={register2} meditation={()=>openMeditation()}  data={datos}/> : <Navbar openCart={openCart} meditation={()=>openMeditation()} login={login} register={register} register2={register2}  data={datos}/>}
+    <UserContext.Provider value={{ user, setUser, users,setUsers }}>
+      <BrowserRouter>
+      {user ? <Navbar2 openCart={openCart} login={login} register={register} register2={register2} meditation={()=>openMeditation()}  data={datos}/> : <Navbar openCart={openCart} meditation={()=>openMeditation()} login={login} register={register} register2={register2}  data={datos}/>}
       <Cart clase={claseRecibida} handleClose={handleClose} /> 
-      {/*<Login renderizar={textoRecibido} clase={claseRecibida2} datos={setDatos} setTextoRecibido3={setTextoRecibido3}/>*/}
-      {/*<Checkout/>*/}
-      { /*<Home clase={textoRecibido3}/>*/ }
+      <Routes>
+        <Route path="/" element={<Home clase={true}/>} />
+        <Route path="/about" element={<About key="about"/>} />
+        <Route path="/login" element={<Login renderizar={textoRecibido} clase={claseRecibida2} datos={setDatos} setTextoRecibido3={setTextoRecibido3}/>} />
+        <Route path="/library" element={<Library key="library"/>} />
+        <Route path="/singleBook" element={<SingleBook />} />
+        <Route path="/meditation" element={<Meditation activo={claseRecibida5}/>} />
+        <Route path="/meditationSingle" element={<MeditationSingle texto={'The Metahuman Journey'}/>} />
+        <Route path="/account" element={<Account clase={claseRecibida4}/>} />
+        <Route path="/checkout" element={<Checkout/>} />
+        
+      </Routes>
+      
+   {/*<Checkout/>*/}
+
       {/*<Account clase={claseRecibida4}/>*/}
-      {/*<Meditation activo={claseRecibida5}/>*/}
-      {/*<Library/>*/}
-      {/*<SingleBook activo={activo}/>*/}
-      {<About/>}
-      {/*<MeditationSingle texto={'The Metahuman Journey'}/>*/}
+
+
+      </BrowserRouter>
+      </UserContext.Provider>
     </>
   )
 }
