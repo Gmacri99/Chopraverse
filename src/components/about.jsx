@@ -155,6 +155,7 @@ const About = () => {
 })
 .to('footer', {
     zIndex:1003,
+    opacity:0,
     onReverseComplete: notAnimating,
 },"<")
 .to('#span2', {
@@ -271,11 +272,12 @@ const About = () => {
     onReverseComplete: notAnimating,
 },"<")
 .fromTo('footer', {
-    top:'100vh',
+    bottom:'-50vh',
     height:'100vh',
 },{
-    top:'0vh',
-    height:'90vh',
+    bottom:'0vh',
+    opacity:1,
+    height:'65vh',
     onReverseComplete: notAnimating,
 },"<")
 
