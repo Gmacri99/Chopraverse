@@ -272,9 +272,23 @@ const Home = ({clase}) => {
             target: window,
             type: 'wheel, touch, scroll',
             preventDefault: true,
-            onDown: () => !animating && scrollListener(currentIndex - 1, 1),
-            onUp: () => !animating && scrollListener(currentIndex + 1, -1),
-            wheelSpeed: -1
+            onDown: (event) => {
+              // Check if scrolling is vertical
+              if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+                  if (!animating) {
+                      scrollListener(currentIndex - 1, 1);
+                  }
+              }
+          },
+          onUp: (event) => {
+              // Check if scrolling is vertical
+              if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+                  if (!animating) {
+                      scrollListener(currentIndex + 1, -1);
+                  }
+              }
+          },
+          wheelSpeed: -1
         })
         
     })
