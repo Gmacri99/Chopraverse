@@ -37,6 +37,21 @@ const Home = ({clase}) => {
   },[])
 
 
+  function isOperaSidebarOpen() {
+    const viewportWidth = window.innerWidth;
+    const windowWidth = window.outerWidth;
+  
+    return viewportWidth !== windowWidth;
+  }
+  
+  // Ejemplo de uso
+  if (isOperaSidebarOpen()) {
+    console.log('La barra lateral de búsqueda de Opera está abierta');
+  } else {
+    console.log('La barra lateral de búsqueda de Opera está cerrada');
+  }
+
+
     gsap.registerPlugin(Observer);
     gsap.set('section', {
     position: 'absolute',
@@ -108,6 +123,7 @@ const Home = ({clase}) => {
         
     .to('.welcome-wrapper', {
         clipPath: 'circle(100%)',
+        
         zIndex:'6',
         onReverseComplete: notAnimating,
     })
@@ -146,8 +162,10 @@ const Home = ({clase}) => {
     })
     .fromTo('.meditation-wrapper', {
         clipPath: 'circle(10%)',
+        transform:'translate(-50%,-50%)',
     }, {
         clipPath: 'circle(100%)',
+        transform:'translate(-50%,-50%)',
         onReverseComplete: notAnimating,
         onComplete: notAnimating,
     }, "<")
@@ -166,7 +184,7 @@ const Home = ({clase}) => {
     
     .to('.meditation-wrapper', {
          clipPath: 'circle(40%)',
-        y: width > 480  ? '-100vh' : width < 480 && height > 847 ? '-155vh' : width < 480 && height < 737 ? '-55vh' : '-50vh',
+        y: isOperaSidebarOpen() ? '-235vh': width > 480  ? '-100vh' : width < 480 && height > 847 ? '-155vh' : width < 480 && height < 737 ? '-55vh' : '-50vh',
     }, "<")
     .to('.meditation-wrapper img', {
         y: width > 480 ? '100vh' : '50vh',
