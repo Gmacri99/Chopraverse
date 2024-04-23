@@ -137,6 +137,7 @@ const Home = ({clase}) => {
 
       .from('#book-slider-section', {
             xPercent: 200,
+            opacity:0,
             onComplete: notAnimating,
         }, "<")
         // INDEX: 4
@@ -270,7 +271,7 @@ const Home = ({clase}) => {
         speed: 1500,
         breakpoints: {
             180: {
-                spaceBetween: 20,
+                spaceBetween: 10,
                 slidesPerView: 1.15,
                 centeredSlides: false,
                 allowTouchMove: true,
@@ -306,7 +307,7 @@ const Home = ({clase}) => {
     const journeyButtons = gsap.utils.toArray('.journey-button');
     
     gsap.set(journeyButtons[0], {
-        scale: 1
+        scale: 1.2
     })
     let buttonsChange = gsap.timeline({
         paused: true,
@@ -358,19 +359,19 @@ const testimonialsSwiperParams = {
     loop: true,
     breakpoints: {
       180: {
-          spaceBetween: 20,
-          slidesPerView: 5,
-          initialSlide: 5,
+        spaceBetween: 15,
+        slidesPerView: 5,
+        initialSlide: 5,
       },
       768: {
-        spaceBetween: 20,
-        slidesPerView: 4,
+        spaceBetween: 15,
+        slidesPerView: 5,
         initialSlide: 5,
     },
     1080: {
-      spaceBetween: 20,
-      slidesPerView: 4,
-      initialSlide: 4,
+      spaceBetween: 15,
+      slidesPerView: 5,
+      initialSlide: 5,
     },
     1280: {
       spaceBetween: 15,
@@ -404,18 +405,22 @@ let testButtonsChange = gsap.timeline({
 
 testimonialsButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
+      const aa=document.getElementById('id55')
         if (testimonialsSwiper.swiper.animating) return;
+        
         switch (index) {
             case 0:
                 testimonialsSwiper.swiper.slideNext();
                 testButtonsChange.tweenTo(0);
                 testimonialsSlideContainer.classList.add('backward');
+                aa.classList.remove('id-especialfor')
                 testimonialsSlideContainer.classList.remove('forward');
                 break;
             case 1:
                 testimonialsSwiper.swiper.slidePrev();
                 testButtonsChange.tweenTo(testButtonsChange.totalDuration());
                 testimonialsSlideContainer.classList.add('forward');
+                aa.classList.remove('id-especialfor')
                 testimonialsSlideContainer.classList.remove('backward');
                 break;
             default:
@@ -578,7 +583,7 @@ useEffect(() => {
     </section>
     <section id="testimonials-section">
       <div className="testimonials-wrapper">
-        <div className="testimonials-slider-container backward">
+        <div className={`testimonials-slider-container backward`}>
           <div>
             <p>
               What <br /><span className="weight">people</span>
@@ -611,13 +616,13 @@ useEffect(() => {
               />
             </swiper-slide>
             <swiper-slide>
-              <img
+              <img  
                 src={testimonio5}
                 alt="slide_testimonial"
               />
             </swiper-slide>
             <swiper-slide>
-              <img
+              <img id='id55' className='id-especialfor'
                 src={testimonio5}
                 alt="slide_testimonial"
               />
@@ -649,7 +654,7 @@ useEffect(() => {
       </div>
     </section>
 
-        <div className='abs-foo'>
+        <div className='abs-foo ddhh'>
           <Footer />
         </div>
         </main>

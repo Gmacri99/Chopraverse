@@ -194,6 +194,10 @@ cursor: pointer;
 display: none;
 }
 
+.testimonials-slider-container > *{
+  transition: all .8s ease-in;
+}
+
 .navbar{
   display: flex;
   width: 100%;
@@ -883,6 +887,10 @@ line-height: normal;
 backdrop-filter: blur(5.389618873596191px);
 }
 
+.div-notp{
+  margin-top: .5rem !important;
+}
+
 .contenido-hero2 ul li{
   display: flex;
   flex-direction: column;
@@ -899,7 +907,7 @@ align-items: center;
 }
 
 .contenido-hero2 ul li img{
-width: 35px;
+width: 30px;
 height: auto;
 }
 
@@ -1334,9 +1342,10 @@ line-height: 100%; /* 0px */
   display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1.15vw;
+    gap: .8vw;
     padding-top: 3rem;
 }
+
 
 .testimonial-info .title .quote {
   position: absolute;
@@ -1370,7 +1379,7 @@ line-height: 100%; /* 0px */
   font-weight: 300;
 }
 .testimonial-info .row-buttons button img {
-  width: 3rem;
+  width: 36px;
   height:auto;
 }
 .testimonial-info .row-buttons button:nth-of-type(1) img {
@@ -1837,11 +1846,11 @@ text-align: left;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
+  gap: .8rem;
   z-index: 1;
 }
 .journey-button {
-  width: auto;
+  width: 36px;
   height: auto;
   background-color: transparent;
   border: none;
@@ -2331,6 +2340,10 @@ backdrop-filter: blur(11.252999305725098px);
   line-height: 100%; /* 0px */
 }
 
+#texto-especial{
+  width: 75%;
+}
+
 .div-Journey div h3{
   color: #F0F0F0;
   font-family: Alexandria;
@@ -2528,6 +2541,21 @@ min-height: 50px;
 max-height: 70px;
 line-height: normal;
 }
+
+.testimonials-slider-container.backward
+swiper-container
+swiper-slide:nth-of-type(6)
+img {
+height: 85%;
+}
+
+.testimonials-slider-container.forward
+swiper-container
+swiper-slide:nth-of-type(5)
+img {
+height: 85%;
+}
+
 
 
 .photo-edit img{
@@ -3176,6 +3204,15 @@ line-height: 130%; /* 22.1px */
   width: 100vw;
   height: 100vh;
 }
+
+.bg-overlay2{
+  background: #00000091;
+  position: absolute;
+  width: 100vw;
+  top: 0%;
+  height: 150vh;
+}
+
 
 .informacion-curso span{
   position: absolute !important;
@@ -3907,7 +3944,7 @@ font-size: clamp(16px,1.25vw,1.5rem);
   width: 100%;
   max-height: 60rem;
   height: 65vh;
-  min-height: 350px;
+  min-height: 450px;
   display: flex;
   z-index: 5;
   bottom: 0%;
@@ -4325,9 +4362,13 @@ text-align: left;
   position: relative;
   transition: all .5s ease;
   width: 100%;
-
+  height: 0vh ;
   flex-direction: column;
   align-items: center;
+}
+
+.height-fit{
+  height: fit-content !important;
 }
 
 .segundo-contenido{
@@ -4341,12 +4382,14 @@ text-align: left;
   min-height: 100vh ;
 }
 
+
+
 .audios{
   display: flex;
   width: 100%;
   top: 0%;
   height: fit-content !important;
-position: absolute !important;
+position: relative !important;
   justify-content: center;
   transition: all .4s ease;
 }
@@ -4367,13 +4410,13 @@ position: absolute !important;
   justify-content: space-between;
   align-items: center;
   width: 95%;
-  margin-bottom: 4rem;
+  margin-bottom: 4.5rem;
 }
 
 .first-div-audio{
   display: flex;
   width: 20%;
-  gap: 2rem;
+  gap: 1rem;
   padding: 1rem 1rem 1rem 2rem;
 }
 
@@ -4390,7 +4433,7 @@ position: absolute !important;
   display: flex;
 flex-direction: column;
 align-items: start;
-gap: .5rem;
+gap: .25rem;
 justify-content: center;
 }
 
@@ -4408,11 +4451,11 @@ justify-content: center;
 }
 
 .reproductor-botones-div1 img{
-  width: 40px;
+  width: 35px;
 }
 
 .reproductor-botones-div1 svg{
-  width: 20px;
+  width: 15px;
   height: auto;
 }
 
@@ -4462,7 +4505,7 @@ justify-content: center;
 }
 
 .audio-speed span{
-  width: 80%;
+  width: 70%;
   background-color: white;
   height: 100%;
   display: block;
@@ -4471,8 +4514,8 @@ justify-content: center;
 
 .audio-speed{
   display: block;
-  width: 220px;
-  height: 7px;
+  width: 160px;
+  height: 6px;
   border-radius: 100px;
   background-color: #A6A6A6;
 }
@@ -4489,7 +4532,7 @@ justify-content: center;
 
 
 .first-div-audio img{
-  width: 120px;
+  width: 100px;
   height: auto;
   object-fit: contain;
 }
@@ -4521,7 +4564,7 @@ justify-content: center;
 }
 
 .audio-nomt{
-  margin-top: -2rem !important; 
+  margin-top: -2.5rem !important; 
   z-index: 1003;
  }
 
@@ -4627,7 +4670,7 @@ backdrop-filter: blur(3.758117914199829px);
   display: grid;
   grid-template-columns: repeat(5,1fr);
 width: 95%;
-  position: relative ;
+  position: absolute ;
   padding-left: 2.5%;
   height: 320px;
   transition: all .5s ease;
@@ -4749,19 +4792,7 @@ opacity: 1 !important;
     width: 65%;
   }
 
-  .testimonials-slider-container.backward
-  swiper-container
-  swiper-slide:nth-of-type(6)
-  img {
-  height: 85%;
-}
-.testimonials-slider-container.forward
-  swiper-container
-  swiper-slide:nth-of-type(5)
-  img {
-  height: 85%;
-}
-
+ 
   .tarjeta-actual{
     height: 19rem;
     padding-bottom: 0rem;
@@ -6406,6 +6437,11 @@ padding-bottom: 2rem;
 
         
 
+        .first-child-single{
+          padding-top: 7.5rem;
+          min-height: 100vh;
+        }
+
 
         .meditation-section {
 
@@ -7625,6 +7661,25 @@ footer{
               padding-left: 2.5%;
             }
 
+            .testimonials-slider-container.backward
+            swiper-container
+            swiper-slide:nth-of-type(6)
+            img {
+            height: 85% ;
+            }
+            
+            .testimonials-slider-container.forward
+            swiper-container
+            swiper-slide:nth-of-type(5)
+            img {
+            height: 85% ;
+            }
+            
+            .id-especialfor{
+              height: 85% !important;
+            }
+ 
+
             .boton-account{
               width: 95%;
             }
@@ -7641,18 +7696,7 @@ footer{
               margin-top: 0rem !important;
             }
 
-            .testimonials-slider-container.backward
-            swiper-container
-            swiper-slide:nth-of-type(6)
-            img {
-            height: 75%;
-          }
-          .testimonials-slider-container.forward
-            swiper-container
-            swiper-slide:nth-of-type(5)
-            img {
-            height: 75%;
-          }
+           
 
             .footer-div > footer{
               height: fit-content !important;
@@ -8187,13 +8231,18 @@ footer{
   height: auto;
 }
 
-.journey-slider-buttons{
-  gap: 1.5rem;
+.journey-button:nth-child(2){
+  margin-top: .3rem;
 }
 
-.abs-foo{
-  height: 100svh !important;
+.row-buttons{
+  gap: 1rem !important;
 }
+
+.journey-slider-buttons{
+  gap: .75rem;
+}
+
 
 footer{
   height: 100vh ;
@@ -8201,13 +8250,11 @@ footer{
 }
 
 .footer-top{
-  height: 50% !important;
+  height: fit-content !important;
 }
 
 .footer-sub{
-  min-height: 50% !important;
-  height: 50%;
-  max-height: 300px;
+height: fit-content !important;
 }
 
 
@@ -8336,7 +8383,7 @@ transition: all .4s ease;
 
 .testimonials-wrapper{
   flex-direction: column;
-  gap: 2.35rem;
+  gap: 1.55rem;
 }
 
 
@@ -8353,7 +8400,7 @@ transition: all .4s ease;
 
 .footer{
   height: calc(var(--vh, 1vh) * 100) !important;
-  margin-top: 2rem;
+  padding-bottom: 18%;
 }
 
 .flex-sub{
@@ -8439,7 +8486,7 @@ transition: all .4s ease;
 }
 
 .testimonials-slider-container div:nth-of-type(1){
-  height: 55.5%;
+  height: 58.5%;
 }
 
 .testimonials-slider-container swiper-container swiper-slide img {
@@ -8526,12 +8573,13 @@ transition: all .4s ease;
 
 
 .contenido-hero {
-  justify-content: flex-end;
+  justify-content: center;
   gap:.5rem;
   width: 90%;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom:6rem;
+  padding-top: 12rem;
+  height: 100%;
 }
 
 .column-buttons-phone{

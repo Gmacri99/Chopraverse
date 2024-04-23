@@ -21,6 +21,7 @@ const MeditationSingle = ({texto,registers}) => {
         const B=document.getElementById('2')
         const C=document.getElementById('3')
         const TT=document.getElementById('33')
+        const TTT=document.getElementById('555')
         const E=document.getElementById('padre123')
         const D=document.getElementById('4')
         switch(e){
@@ -35,10 +36,10 @@ const MeditationSingle = ({texto,registers}) => {
             case 2:
                 A.classList.add('move-left')
                 B.classList.remove('move-left')
-                E.classList.add('segundo-contenido-active')
-                B.style.position='relative'
+
                 C.classList.add('move-left')
                 TT.classList.add('move-left')
+                
                 setActiveInput(true)
                 break;
             case 3:
@@ -49,6 +50,7 @@ const MeditationSingle = ({texto,registers}) => {
                 D.classList.add('audio-nomt')
                 C.classList.remove('move-left')
                 TT.classList.add('move-left')
+                TTT.classList.add('height-fit')
                 setActiveInput(true)
                 break;
             default:
@@ -62,7 +64,9 @@ const MeditationSingle = ({texto,registers}) => {
         const E=document.getElementById('padre123')
         const B=document.getElementById('2')
         const C=document.getElementById('3')
+        const DD=document.getElementById('4')
         const TT=document.getElementById('33')
+        const TTT=document.getElementById('555')
         switch(e){
             case 1:
                 A.classList.add('move-left')
@@ -80,6 +84,8 @@ const MeditationSingle = ({texto,registers}) => {
                 C.classList.add('move-left')
                 E.classList.remove('segundo-contenido-active')
                 TT.classList.remove('move-left')
+                DD.classList.remove('audio-nomt')
+                TTT.classList.remove('height-fit')
                 setActiveInput(false)
                 break;
             default:
@@ -90,6 +96,7 @@ const MeditationSingle = ({texto,registers}) => {
 
   return (
     <section className="meditation-section single-2 audio-nogap">
+        <span className='bg-overlay2'></span>
         <div className='first-child-single'>
     <video
       className={`hero-video`} muted autoPlay playsInline loop>
@@ -98,7 +105,7 @@ const MeditationSingle = ({texto,registers}) => {
 
     
     <div  className="contenido-hero2">
-        <h2>{texto}</h2>
+        <h2 id='texto-especial'>{texto}</h2>
         <p>
         Lorem ipsum dolor sit amet consectetur. Arcu sollicitudin quis nulla proin in. Sed ipsum molestie nulla augue. Porttitor porttitor in non curabitur amet dignissim amet egestas. At sagittis tempus ultrices faucibus elit. Vulputate urna lorem arcu mauris et in elementum.
         </p>
@@ -291,7 +298,7 @@ const MeditationSingle = ({texto,registers}) => {
             </div>}
             <div id='3' className='audios move-left'>
             <span className='gradiente'></span>
-            <div className='capitulo2'>
+            <div id='555' className='capitulo2'>
                 <button onClick={()=>closeModal(3)} className='capitulo-back capitulo2-back'>
        <svg width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path id="Vector"  d="M3.80474 0.205024C4.06509 0.478395 4.06509 0.921608 3.80474 1.19498L1.60946 3.50001L3.80474 5.80504C4.06509 6.0784 4.06509 6.52164 3.80474 6.79499C3.54438 7.06834 3.12228 7.06834 2.86192 6.79499L0.195251 3.99498C-0.0650837 3.72163 -0.0650836 3.2784 0.195251 3.00503L2.86192 0.205023C3.12228 -0.0683412 3.54438 -0.0683412 3.80474 0.205024Z" fill="white"/>
